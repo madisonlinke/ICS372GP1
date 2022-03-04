@@ -1,4 +1,4 @@
-package edu.ics372.gp1;
+package edu.ics372.gp1.store;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -7,6 +7,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * @author jpham
+ *
+ */
 public class Customer {
 
 	private String name;
@@ -15,8 +19,16 @@ public class Customer {
 	private String id;
 	private static final String CUSTOMER_STRING = "C";
 	private static int idCounter;
-	private List<Appliance> appliances = new ArrayList<Appliance>();
+	private List<Appliance> appliances = new ArrayList<Appliance>();// appliances owned by customer
 
+	/**
+	 * Customer constructor to accept name, address, and phoneNumber. Generates new
+	 * member ID off of static variable
+	 * 
+	 * @param name
+	 * @param address
+	 * @param phoneNumber
+	 */
 	public Customer(String name, String address, String phoneNumber) {
 		super();
 		this.name = name;
@@ -53,6 +65,7 @@ public class Customer {
 		appliances.add(appliance);
 	}
 
+	// may need to modify hashcode and equals
 	@Override
 	public int hashCode() {
 		return Objects.hash(address, id, name, phoneNumber);

@@ -1,9 +1,15 @@
-package edu.ics372.gp1;
+package edu.ics372.gp1.store;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * Repair plan object class
+ * 
+ * @author jpham
+ *
+ */
 public class RepairPlan {
 
 	private double cost;
@@ -25,14 +31,21 @@ public class RepairPlan {
 		this.cost = cost;
 	}
 
+	// Charges all subscribers of this plan
 	public void chargePlan() {
 
 	}
 
+	/**
+	 * Adds a customer to the list of customers subscribed to this specific plan
+	 * 
+	 * @param customer
+	 */
 	public void enrollCustomerInRepairPlan(Customer customer) {
 		subscribers.add(customer);
 	}
 
+	// may need to modify hashcode and equals
 	@Override
 	public int hashCode() {
 		return Objects.hash(applianceId, cost, subscribers);
