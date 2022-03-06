@@ -27,11 +27,11 @@ public class CustomerList implements ItemList<Customer, String>, Serializable {
 	 * This method creates a CustomerList if none yet exists.
 	 * @return either the newly created or existing customerList
 	 */
-	public CustomerList getInstance() {
+	public static CustomerList getInstance() {
 		if (customerList == null) {
 			customerList = new CustomerList();
-			return customerList;
 		}
+		return customerList;
 	}
 	/**
 	 * This method searches the customers field for an Customer object with a matching customerID

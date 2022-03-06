@@ -14,7 +14,6 @@ public class RepairPlanList implements ItemList<RepairPlan, String>, Serializabl
 	/**
 	 * This field stores the singleton RepairPlanList object.
 	 */
-	private
 	private static RepairPlanList repairPlanList;
 	/**
 	 * This field stores all Customer objects stored in this RepairPlanList.
@@ -31,8 +30,8 @@ public class RepairPlanList implements ItemList<RepairPlan, String>, Serializabl
 	public RepairPlanList getInstance() {
 		if (repairPlanList == null) {
 			repairPlanList = new RepairPlanList();
-			return repairPlanList;
 		}
+		return repairPlanList;
 	}
 	/**
 	 * This method searches the customers field for an RepairPlan object with a matching applianceID

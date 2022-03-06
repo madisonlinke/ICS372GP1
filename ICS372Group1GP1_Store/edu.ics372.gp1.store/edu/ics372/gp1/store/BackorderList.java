@@ -27,11 +27,11 @@ public class BackorderList implements ItemList<Backorder, String>, Serializable 
 	 * This method creates a BackorderList if none yet exists.
 	 * @return either the newly created or existing backorderList
 	 */
-	public BackorderList getInstance() {
+	public static BackorderList getInstance() {
 		if (backorderList == null) {
 			backorderList = new BackorderList();
-			return backorderList;
 		}
+		return backorderList;
 	}
 	/**
 	 * This method searches the appliances field for an Backorder object with a matching backorderID

@@ -28,11 +28,11 @@ public class Inventory implements ItemList<Appliance, String>, Serializable{
 	 * This method creates an Inventory if none yet exists.
 	 * @return either the newly created or existing inventory
 	 */
-	public Inventory getInstance() {
+	public static Inventory getInstance() {
 		if (inventory == null) {
 			inventory = new Inventory();
-			return inventory;
 		}
+		return inventory;
 	}
 	/**
 	 * This method searches the appliances field for an Appliance object with a matching applianceID
