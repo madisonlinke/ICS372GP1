@@ -1,0 +1,49 @@
+/**
+ * This class implements a BackorderList, which stores a list of all avaiable Backorder objects.
+ * This class is a singleton.
+ * It has the backorderList and backorders fields.
+ * It has the getInstance and search methods.
+ */
+package edu.ics372.gp1.store;
+
+import java.io.Serializable;
+import java.util.LinkedList;
+import java.util.List;
+
+public class BackorderList implements ItemList<Backorder, String>, Serializable {
+	/**
+	 * This field stores the singleton BackorderList object.
+	 */
+	private static BackorderList backorderList;
+	/**
+	 * This field stores all Backorder objects stored in this BackorderList.
+	 */
+	private List<Backorder> backorders = new LinkedList<Backorder>();
+	
+	private BackorderList() {
+		
+	}
+	/**
+	 * This method creates a BackorderList if none yet exists.
+	 * @return either the newly created or existing backorderList
+	 */
+	public BackorderList getInstance() {
+		if (backorderList == null) {
+			backorderList = new BackorderList();
+			return backorderList;
+		}
+	}
+	/**
+	 * This method searches the appliances field for an Backorder object with a matching backorderID
+	 * @return the matching Backorder or null, if no match is found.
+	 */
+	@Override
+	public Backorder search(String backorderID) {
+		for (Backorder backorder: backorders) {
+			if (backorder.matches(backorderID)) {
+				return backorder;
+			}
+		}
+		return null;
+	}
+}
