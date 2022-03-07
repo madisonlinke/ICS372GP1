@@ -57,4 +57,11 @@ public class RepairPlan {
 				&& Objects.equals(subscribers, other.subscribers);
 	}
 
+	@Override
+	public String toString() {
+		return "RepairPlan [cost=" + cost + ", applianceId=" + applianceId + ", subscribers=" + subscribers.toString()
+				+ "]";
+	}
+
+	// need to implement save
 }

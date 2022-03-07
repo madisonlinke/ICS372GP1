@@ -22,6 +22,7 @@ public class Customer implements Matchable<String>, Serializable {
 	private static final String CUSTOMER_STRING = "C";
 	private static int idCounter;
 	private List<Appliance> appliances = new ArrayList<Appliance>();// appliances owned by customer
+	private List<RepairPlan> repairPlansEnrolledIn = new ArrayList<RepairPlan>();
 
 	/**
 	 * Customer constructor to accept name, address, and phoneNumber. Generates new
@@ -65,6 +66,12 @@ public class Customer implements Matchable<String>, Serializable {
 		Customer other = (Customer) obj;
 		return Objects.equals(address, other.address) && Objects.equals(id, other.id)
 				&& Objects.equals(name, other.name) && Objects.equals(phoneNumber, other.phoneNumber);
+	}
+
+	@Override
+	public String toString() {
+		return "Customer [name=" + name + ", address=" + address + ", phoneNumber=" + phoneNumber + ", id=" + id
+				+ ", accountBalance=" + accountBalance + "]" + appliances.toString();
 	}
 
 	public static void save(ObjectOutputStream output) throws IOException {

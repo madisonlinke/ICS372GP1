@@ -19,12 +19,14 @@ public class RepairPlanList implements ItemList<RepairPlan, String>, Serializabl
 	 * This field stores all Customer objects stored in this RepairPlanList.
 	 */
 	private List<RepairPlan> repairPlans = new LinkedList<RepairPlan>();
-	
+
 	private RepairPlanList() {
-		
+
 	}
+
 	/**
 	 * This method creates a RepairPlanList if none yet exists.
+	 * 
 	 * @return either the newly created or existing repairPlanList
 	 */
 	public RepairPlanList getInstance() {
@@ -33,17 +35,26 @@ public class RepairPlanList implements ItemList<RepairPlan, String>, Serializabl
 		}
 		return repairPlanList;
 	}
+
 	/**
-	 * This method searches the customers field for an RepairPlan object with a matching applianceID
+	 * This method searches the customers field for an RepairPlan object with a
+	 * matching applianceID
+	 * 
 	 * @return the matching RepairPlan or null, if no match is found.
 	 */
 	@Override
 	public RepairPlan search(String applianceID) {
-		for (RepairPlan repairPlan: repairPlans) {
+		for (RepairPlan repairPlan : repairPlans) {
 			if (repairPlan.matches(applianceID)) {
 				return repairPlan;
 			}
 		}
 		return null;
 	}
+
+	@Override
+	public String toString() {
+		return "RepairPlanList [repairPlans=" + repairPlans + "]";
+	}
+
 }

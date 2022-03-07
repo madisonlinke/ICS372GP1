@@ -19,12 +19,14 @@ public class CustomerList implements ItemList<Customer, String>, Serializable {
 	 * This field stores all Customer objects stored in this CustomerList.
 	 */
 	private List<Customer> customers = new LinkedList<Customer>();
-	
+
 	private CustomerList() {
-		
+
 	}
+
 	/**
 	 * This method creates a CustomerList if none yet exists.
+	 * 
 	 * @return either the newly created or existing customerList
 	 */
 	public static CustomerList getInstance() {
@@ -33,17 +35,26 @@ public class CustomerList implements ItemList<Customer, String>, Serializable {
 		}
 		return customerList;
 	}
+
 	/**
-	 * This method searches the customers field for an Customer object with a matching customerID
+	 * This method searches the customers field for an Customer object with a
+	 * matching customerID
+	 * 
 	 * @return the matching Customer or null, if no match is found.
 	 */
 	@Override
 	public Customer search(String customerID) {
-		for (Customer customer: customers) {
+		for (Customer customer : customers) {
 			if (customer.matches(customerID)) {
 				return customer;
 			}
 		}
 		return null;
 	}
+
+	@Override
+	public String toString() {
+		return "CustomerList [customers=" + customers + "]";
+	}
+
 }
