@@ -3,6 +3,7 @@ package edu.ics372.gp1.store;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -11,7 +12,7 @@ import java.util.Objects;
  * @author jpham
  *
  */
-public class Customer {
+public class Customer implements Matchable<String>, Serializable{
 
 	private String name;
 	private String address;
@@ -63,6 +64,11 @@ public class Customer {
 
 	public void addAppliance(Appliance appliance) {
 		appliances.add(appliance);
+	}
+	
+	@Override
+	public boolean matches(String customerID) {
+		return this.id.equals(customerID);
 	}
 
 	// may need to modify hashcode and equals
