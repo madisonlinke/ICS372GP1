@@ -1,6 +1,5 @@
 package edu.ics372.gp1.store;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -22,14 +21,6 @@ public class RepairPlan {
 		this.cost = cost;
 		this.applianceId = applianceId;
 		this.subscribers = subscribers;
-	}
-
-	public double getCost() {
-		return cost;
-	}
-
-	public void setCost(double cost) {
-		this.cost = cost;
 	}
 
 	// Charges all subscribers of this plan

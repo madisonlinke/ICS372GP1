@@ -12,12 +12,13 @@ import java.util.Objects;
  * @author jpham
  *
  */
-public class Customer implements Matchable<String>, Serializable{
+public class Customer implements Matchable<String>, Serializable {
 
 	private String name;
 	private String address;
 	private String phoneNumber;
 	private String id;
+	private String accountBalance;
 	private static final String CUSTOMER_STRING = "C";
 	private static int idCounter;
 	private List<Appliance> appliances = new ArrayList<Appliance>();// appliances owned by customer
@@ -41,7 +42,7 @@ public class Customer implements Matchable<String>, Serializable{
 	public void addAppliance(Appliance appliance) {
 		appliances.add(appliance);
 	}
-	
+
 	@Override
 	public boolean matches(String customerID) {
 		return this.id.equals(customerID);
