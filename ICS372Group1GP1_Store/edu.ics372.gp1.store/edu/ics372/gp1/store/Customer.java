@@ -14,6 +14,7 @@ import java.util.Objects;
  */
 public class Customer implements Matchable<String>, Serializable {
 
+	private static final long serialVersionUID = 1L;
 	private String name;
 	private String address;
 	private String phoneNumber;

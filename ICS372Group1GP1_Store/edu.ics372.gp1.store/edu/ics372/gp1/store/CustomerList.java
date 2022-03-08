@@ -52,6 +52,13 @@ public class CustomerList implements ItemList<Customer, String>, Serializable {
 		return null;
 	}
 
+	/**
+	 * Method to return list of all customers
+	 */
+	public String listAll() {
+		return customers.toString();
+	}
+
 	@Override
 	public String toString() {
 		return "CustomerList [customers=" + customers + "]";

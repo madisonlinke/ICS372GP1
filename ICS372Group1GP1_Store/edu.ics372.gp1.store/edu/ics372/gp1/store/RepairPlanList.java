@@ -52,6 +52,15 @@ public class RepairPlanList implements ItemList<RepairPlan, String>, Serializabl
 		return null;
 	}
 
+	/**
+	 * List all repair plans
+	 * 
+	 * @return String, all repair plans
+	 */
+	public String listAll() {
+		return repairPlans.toString();
+	}
+
 	@Override
 	public String toString() {
 		return "RepairPlanList [repairPlans=" + repairPlans + "]";
