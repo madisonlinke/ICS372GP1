@@ -1,14 +1,18 @@
-//Kean Jaycox
-//ICS 372 Group Project 1
+/**
+ * Appliance class
+ * 
+ * @author Kean
+ *
+ */
 package edu.ics372.gp1.store;
 
 public abstract class Appliance implements Matchable<String>{
     
-    private String brand;
-    private String model;
-    private double cost;
-    private int stock;
-    private String applianceID;
+    protected String brand;
+    protected String model;
+    protected double cost;
+    protected int stock;
+    protected String applianceID;
     
     @Override
     public boolean matches(String customerID) {
@@ -24,11 +28,11 @@ public abstract class Appliance implements Matchable<String>{
     }
     
     public void addStock() {
-        
+        //NEEDS WORK
     }
     
     public void removeStock() {
-        
+        //NEEDS WORK
     }
     
     public String getBrand() {
