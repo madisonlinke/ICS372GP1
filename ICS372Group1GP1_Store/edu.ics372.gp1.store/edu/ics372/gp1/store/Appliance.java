@@ -31,4 +31,24 @@ public abstract class Appliance implements Matchable<String>{
         
     }
     
+    public String getBrand() {
+        return brand;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public double getCost() {
+        return cost;
+    }
+
+    public int getStock() {
+        return stock;
+    }
+
+    public String getApplianceID() {
+        return applianceID;
+    }
+    
 }
