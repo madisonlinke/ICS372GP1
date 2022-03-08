@@ -1,5 +1,6 @@
 package edu.ics372.gp1.store;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -10,16 +11,16 @@ import java.util.Objects;
  * @author jpham
  *
  */
-public class RepairPlan {
+public class RepairPlan implements Matchable<String>, Serializable{
 
 	private double cost;
-	private String applianceId;
+	private String applianceID;
 	private List<Customer> subscribers = new ArrayList<Customer>();
 
-	public RepairPlan(double cost, String applianceId, List<Customer> subscribers) {
+	public RepairPlan(double cost, String applianceID, List<Customer> subscribers) {
 		super();
 		this.cost = cost;
-		this.applianceId = applianceId;
+		this.applianceID = applianceID;
 		this.subscribers = subscribers;
 	}
 
@@ -36,11 +37,16 @@ public class RepairPlan {
 	public void enrollCustomerInRepairPlan(Customer customer) {
 		subscribers.add(customer);
 	}
+	
+	@Override
+	public boolean matches(String customerID) {
+		return this.applianceID.equals(customerID);
+	}
 
 	// may need to modify hashcode and equals
 	@Override
 	public int hashCode() {
-		return Objects.hash(applianceId, cost, subscribers);
+		return Objects.hash(applianceID, cost, subscribers);
 	}
 
 	@Override
@@ -52,14 +58,14 @@ public class RepairPlan {
 		if (getClass() != obj.getClass())
 			return false;
 		RepairPlan other = (RepairPlan) obj;
-		return Objects.equals(applianceId, other.applianceId)
+		return Objects.equals(applianceID, other.applianceID)
 				&& Double.doubleToLongBits(cost) == Double.doubleToLongBits(other.cost)
 				&& Objects.equals(subscribers, other.subscribers);
 	}
 
 	@Override
 	public String toString() {
-		return "RepairPlan [cost=" + cost + ", applianceId=" + applianceId + ", subscribers=" + subscribers.toString()
+		return "RepairPlan [cost=" + cost + ", applianceId=" + applianceID + ", subscribers=" + subscribers.toString()
 				+ "]";
 	}
 

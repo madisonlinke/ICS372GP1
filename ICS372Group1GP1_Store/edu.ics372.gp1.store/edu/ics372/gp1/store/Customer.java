@@ -18,7 +18,7 @@ public class Customer implements Matchable<String>, Serializable {
 	private String address;
 	private String phoneNumber;
 	private String id;
-	private String accountBalance;
+	private double accountBalance;
 	private static final String CUSTOMER_STRING = "C";
 	private static int idCounter;
 	private List<Appliance> appliances = new ArrayList<Appliance>();// appliances owned by customer
