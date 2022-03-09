@@ -45,6 +45,54 @@ public class Customer implements Matchable<String>, Serializable {
 		appliances.add(appliance);
 	}
 
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public double getAccountBalance() {
+		return accountBalance;
+	}
+
+	public void setAccountBalance(double accountBalance) {
+		this.accountBalance = accountBalance;
+	}
+
+	public List<RepairPlan> getRepairPlansEnrolledIn() {
+		return repairPlansEnrolledIn;
+	}
+
+	public void setRepairPlansEnrolledIn(List<RepairPlan> repairPlansEnrolledIn) {
+		this.repairPlansEnrolledIn = repairPlansEnrolledIn;
+	}
+
 	@Override
 	public boolean matches(String customerID) {
 		return this.id.equals(customerID);
