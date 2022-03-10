@@ -16,7 +16,7 @@ public abstract class Appliance implements Matchable<String>{
     
     @Override
     public boolean matches(String customerID) {
-        return this.id.equals(customerID);
+        return this.applianceID.equals(customerID);
     }
     
     public Appliance(String brand, String model, double cost, int stock, String applianceID) {
