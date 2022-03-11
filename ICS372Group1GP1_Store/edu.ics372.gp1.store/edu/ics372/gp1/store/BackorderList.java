@@ -46,4 +46,8 @@ public class BackorderList implements ItemList<Backorder, String>, Serializable 
 		}
 		return null;
 	}
+	@Override
+	public String listAll() {
+		 return backorders.toString();
+	}
 }

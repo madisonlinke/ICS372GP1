@@ -47,5 +47,9 @@ public class Inventory implements ItemList<Appliance, String>, Serializable{
 		}
 		return null;
 	}
-
+	@Override
+	public String listAll() {
+		return appliances.toString();
+	}
+	
 }

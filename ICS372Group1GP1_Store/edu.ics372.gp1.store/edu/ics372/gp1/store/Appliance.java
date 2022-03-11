@@ -6,7 +6,9 @@
  */
 package edu.ics372.gp1.store;
 
-public abstract class Appliance implements Matchable<String>{
+import java.io.Serializable;
+
+public abstract class Appliance implements Matchable<String>, Serializable {
     
     protected String brand;
     protected String model;
