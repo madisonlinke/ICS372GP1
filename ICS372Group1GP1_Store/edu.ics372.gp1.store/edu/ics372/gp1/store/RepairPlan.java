@@ -34,7 +34,7 @@ public class RepairPlan implements Matchable<String>, Serializable{
 	 * 
 	 * @param customer
 	 */
-	public void enrollCustomerInRepairPlan(Customer customer) {
+	public void enrollCustomer(Customer customer) {
 		subscribers.add(customer);
 	}
 	

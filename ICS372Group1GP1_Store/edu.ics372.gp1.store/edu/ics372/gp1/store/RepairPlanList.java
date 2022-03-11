@@ -29,7 +29,7 @@ public class RepairPlanList implements ItemList<RepairPlan, String>, Serializabl
 	 * 
 	 * @return either the newly created or existing repairPlanList
 	 */
-	public RepairPlanList getInstance() {
+	public static RepairPlanList getInstance() {
 		if (repairPlanList == null) {
 			repairPlanList = new RepairPlanList();
 		}
