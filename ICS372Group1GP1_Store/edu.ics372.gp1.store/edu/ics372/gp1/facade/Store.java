@@ -1,6 +1,7 @@
-package edu.ics372.gp1.store;
+package edu.ics372.gp1.facade;
 
 import java.io.Serializable;
+import edu.ics372.gp1.store.*;
 
 public class Store implements Serializable{
 	private static final long serialVersionUID = 1L;
