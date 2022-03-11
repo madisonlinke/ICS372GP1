@@ -93,9 +93,13 @@ public class Customer implements Matchable<String>, Serializable {
 	public void setRepairPlansEnrolledIn(List<RepairPlan> repairPlansEnrolledIn) {
 		this.repairPlansEnrolledIn = repairPlansEnrolledIn;
 	}
-	
+
 	public void charge(double cost) {
 		accountBalance += cost;
+	}
+
+	public boolean isEnrolledInRepairPlan() {
+		return repairPlansEnrolledIn.isEmpty();
 	}
 
 	@Override
@@ -125,7 +129,7 @@ public class Customer implements Matchable<String>, Serializable {
 	@Override
 	public String toString() {
 		return "Customer [name=" + name + ", address=" + address + ", phoneNumber=" + phoneNumber + ", id=" + id
-				+ ", accountBalance=" + accountBalance + "]" + appliances.toString();
+				+ ", accountBalance=" + accountBalance + "]" + " Enrolled in plan?: " + this.isEnrolledInRepairPlan();
 	}
 
 	public static void save(ObjectOutputStream output) throws IOException {

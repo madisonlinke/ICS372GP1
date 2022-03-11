@@ -3,6 +3,7 @@ package edu.ics372.gp1.facade;
 // unsure how this matches library example. It appears to not be as reliant on 
 import edu.ics372.gp1.store.Appliance;
 import edu.ics372.gp1.store.Customer;
+import edu.ics372.gp1.store.RepairPlan;
 
 public abstract class DataTransfer {
 
@@ -16,6 +17,7 @@ public abstract class DataTransfer {
 	private String applianceID;
 	private double applianceCost;
 	private int applianceStock;
+	// needs repairplan fields
 
 	/**
 	 * This sets all fields to "none".
@@ -113,6 +115,10 @@ public abstract class DataTransfer {
 	}
 
 	public void setApplianceFields(Appliance appliance) {
+		// needs work
+	}
+
+	public void setRepairPlanFields(RepairPlan repairPlan) {
 		// needs work
 	}
 

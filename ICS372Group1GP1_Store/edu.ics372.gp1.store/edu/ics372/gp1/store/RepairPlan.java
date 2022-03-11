@@ -13,8 +13,12 @@ import edu.ics372.gp1.facade.Store;
  * @author jpham
  *
  */
-public class RepairPlan implements Matchable<String>, Serializable{
+public class RepairPlan implements Matchable<String>, Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private double cost;
 	private String applianceID;
 	private List<Customer> subscribers = new ArrayList<Customer>();
@@ -26,10 +30,11 @@ public class RepairPlan implements Matchable<String>, Serializable{
 		this.subscribers = subscribers;
 	}
 
-	/** Charges all subscribers of this plan and adds the revenue to the store
+	/**
+	 * Charges all subscribers of this plan and adds the revenue to the store
 	 */
 	public void chargePlan() {
-		for (Customer customer: subscribers) {
+		for (Customer customer : subscribers) {
 			Store.getInstance().addRepairPlanRevenue(cost);
 			customer.charge(cost);
 		}
@@ -37,37 +42,43 @@ public class RepairPlan implements Matchable<String>, Serializable{
 
 	/**
 	 * Adds a customer to the list of customers subscribed to this specific plan
+	 * 
 	 * @param customer
-	 * @return true if customer was not already subscribed, false if already subscribed
+	 * @return true if customer was not already subscribed, false if already
+	 *         subscribed
 	 */
 	public boolean enrollCustomer(Customer customer) {
 		if (!subscribers.contains(customer)) {
-		subscribers.add(customer);
-		return true;
-		}
-		else {
+			subscribers.add(customer);
+			return true;
+		} else {
 			return false;
 		}
 	}
-	
+
 	/**
 	 * Removes the given customer from the list of subscribers.
+	 * 
 	 * @param customer
-	 * @return true if valid customer was removed, false if customer was not a subscriber
+	 * @return true if valid customer was removed, false if customer was not a
+	 *         subscriber
 	 */
 	public boolean withdrawCustomer(Customer customer) {
 		if (subscribers.contains(customer)) {
 			subscribers.remove(customer);
 			return true;
-		}
-		else {
+		} else {
 			return false;
 		}
 	}
-	
+
 	@Override
 	public boolean matches(String customerID) {
 		return this.applianceID.equals(customerID);
+	}
+
+	public String listAll() {
+		return subscribers.toString();
 	}
 
 	// may need to modify hashcode and equals
