@@ -38,6 +38,7 @@ public class Customer implements Matchable<String>, Serializable {
 		this.name = name;
 		this.address = address;
 		this.phoneNumber = phoneNumber;
+		this.accountBalance = 0;
 		id = CUSTOMER_STRING + idCounter++;
 	}
 
@@ -91,6 +92,10 @@ public class Customer implements Matchable<String>, Serializable {
 
 	public void setRepairPlansEnrolledIn(List<RepairPlan> repairPlansEnrolledIn) {
 		this.repairPlansEnrolledIn = repairPlansEnrolledIn;
+	}
+	
+	public void charge(double cost) {
+		accountBalance += cost;
 	}
 
 	@Override

@@ -1,6 +1,9 @@
+
 package edu.ics372.gp1.facade;
 
 import java.io.Serializable;
+import java.util.Iterator;
+
 import edu.ics372.gp1.store.*;
 
 public class Store implements Serializable{
@@ -10,8 +13,12 @@ public class Store implements Serializable{
 	private CustomerList customerList = CustomerList.getInstance();
 	private RepairPlanList repairPlanList = RepairPlanList.getInstance();
 	private static Store store;
+	private double salesRevenue;
+	private double repairPlanRevenue;
 	
 	private Store() {
+		salesRevenue = 0;
+		repairPlanRevenue = 0;
 	}
 	
 	public static Store getInstance() {
@@ -29,8 +36,30 @@ public class Store implements Serializable{
 			return false;
 		}
 		else {
+			return repairPlan.enrollCustomer(customer);
+		}
+	}
+	
+	public boolean withdrawFromRepairPlan(String customerID, String applianceID) {
+		Customer customer = customerList.search(customerID);
+		RepairPlan repairPlan = repairPlanList.search(applianceID);
+		if (customer.equals(null) || repairPlan.equals(null)) {
+			return false;
+		}
+		else {
 			repairPlan.enrollCustomer(customer);
 			return true;
 		}
+	}
+	
+	public void chargeAllRepairPlans() {
+		Iterator<RepairPlan> repairPlans = repairPlanList.getRepairPlans();
+		while (repairPlans.hasNext()) {
+			repairPlans.next().chargePlan();
+		}
+	}
+	
+	public void addRepairPlanRevenue(double cost) {
+		repairPlanRevenue += cost;
 	}
 }

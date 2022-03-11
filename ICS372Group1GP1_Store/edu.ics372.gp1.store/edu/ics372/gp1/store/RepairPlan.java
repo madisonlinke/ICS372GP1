@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import edu.ics372.gp1.facade.Store;
+
 /**
  * Repair plan object class
  * 
@@ -24,18 +26,43 @@ public class RepairPlan implements Matchable<String>, Serializable{
 		this.subscribers = subscribers;
 	}
 
-	// Charges all subscribers of this plan
+	/** Charges all subscribers of this plan and adds the revenue to the store
+	 */
 	public void chargePlan() {
-
+		for (Customer customer: subscribers) {
+			Store.getInstance().addRepairPlanRevenue(cost);
+			customer.charge(cost);
+		}
 	}
 
 	/**
 	 * Adds a customer to the list of customers subscribed to this specific plan
-	 * 
 	 * @param customer
+	 * @return true if customer was not already subscribed, false if already subscribed
 	 */
-	public void enrollCustomer(Customer customer) {
+	public boolean enrollCustomer(Customer customer) {
+		if (!subscribers.contains(customer)) {
 		subscribers.add(customer);
+		return true;
+		}
+		else {
+			return false;
+		}
+	}
+	
+	/**
+	 * Removes the given customer from the list of subscribers.
+	 * @param customer
+	 * @return true if valid customer was removed, false if customer was not a subscriber
+	 */
+	public boolean withdrawCustomer(Customer customer) {
+		if (subscribers.contains(customer)) {
+			subscribers.remove(customer);
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 	
 	@Override

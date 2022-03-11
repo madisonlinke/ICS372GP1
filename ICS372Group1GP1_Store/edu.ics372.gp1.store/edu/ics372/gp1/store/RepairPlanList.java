@@ -7,6 +7,7 @@
 package edu.ics372.gp1.store;
 
 import java.io.Serializable;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -34,6 +35,14 @@ public class RepairPlanList implements ItemList<RepairPlan, String>, Serializabl
 			repairPlanList = new RepairPlanList();
 		}
 		return repairPlanList;
+	}
+	
+	/**
+	 * Returns an iterator for the list of repair plans.
+	 * @return
+	 */
+	public Iterator<RepairPlan> getRepairPlans() {
+		return repairPlans.iterator();
 	}
 
 	/**
