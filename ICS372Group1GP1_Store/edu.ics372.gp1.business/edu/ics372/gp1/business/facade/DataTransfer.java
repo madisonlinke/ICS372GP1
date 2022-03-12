@@ -124,6 +124,22 @@ public abstract class DataTransfer {
 		applianceStock = appliance.getStock();
 	}
 
+	public double getRepairPlanCost() {
+		return repairPlanCost;
+	}
+
+	public void setRepairPlanCost(double repairPlanCost) {
+		this.repairPlanCost = repairPlanCost;
+	}
+
+	public String getRepairPlanApplianceID() {
+		return repairPlanApplianceID;
+	}
+
+	public void setRepairPlanApplianceID(String repairPlanApplianceID) {
+		this.repairPlanApplianceID = repairPlanApplianceID;
+	}
+
 	public void setRepairPlanFields(RepairPlan repairPlan) {
 		// needs work
 		repairPlanCost = repairPlan.getCost();
@@ -144,6 +160,8 @@ public abstract class DataTransfer {
 		applianceCost = 0;
 		applianceStock = 0;
 		applianceID = "No such model";
+		repairPlanCost = 0;
+		repairPlanApplianceID = "No such plan";
 
 	}
 }
