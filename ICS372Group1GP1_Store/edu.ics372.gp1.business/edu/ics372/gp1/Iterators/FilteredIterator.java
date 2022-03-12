@@ -4,7 +4,7 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.util.function.Predicate;
 
-import edu.ics372.gp1.store.Appliance;
+import edu.ics372.gp1.business.store.Appliance;
 
 public class FilteredIterator implements Iterator<Appliance> {
 	private Appliance item;

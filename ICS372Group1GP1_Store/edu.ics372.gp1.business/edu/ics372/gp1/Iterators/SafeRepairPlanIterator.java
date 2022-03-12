@@ -3,8 +3,8 @@ package edu.ics372.gp1.Iterators;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-import edu.ics372.gp1.facade.Result;
-import edu.ics372.gp1.store.RepairPlan;
+import edu.ics372.gp1.business.facade.Result;
+import edu.ics372.gp1.business.store.RepairPlan;
 
 public class SafeRepairPlanIterator implements Iterator<Result> {
 	private Iterator<RepairPlan> iterator;

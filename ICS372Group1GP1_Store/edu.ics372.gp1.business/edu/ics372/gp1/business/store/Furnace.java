@@ -1,4 +1,4 @@
-package edu.ics372.gp1.store;
+package edu.ics372.gp1.business.store;
 
 public class Furnace extends Appliance {
 	/**

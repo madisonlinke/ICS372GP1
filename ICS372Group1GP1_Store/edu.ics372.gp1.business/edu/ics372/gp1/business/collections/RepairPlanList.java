@@ -4,14 +4,14 @@
  * It has the repairPlanList and repairPlans fields.
  * It has the getInstance and search methods.
  */
-package edu.ics372.gp1.collections;
+package edu.ics372.gp1.business.collections;
 
 import java.io.Serializable;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-import edu.ics372.gp1.store.RepairPlan;
+import edu.ics372.gp1.business.store.RepairPlan;
 
 public class RepairPlanList implements ItemList<RepairPlan, String>, Serializable {
 	/**

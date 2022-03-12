@@ -1,10 +1,10 @@
-package edu.ics372.gp1.tests;
+package edu.ics372.gp1.business.tests;
 
-import edu.ics372.gp1.facade.Request;
-import edu.ics372.gp1.facade.Result;
-import edu.ics372.gp1.facade.Store;
-import edu.ics372.gp1.store.Appliance;
-import edu.ics372.gp1.store.Customer;
+import edu.ics372.gp1.business.facade.Request;
+import edu.ics372.gp1.business.facade.Result;
+import edu.ics372.gp1.business.facade.Store;
+import edu.ics372.gp1.business.store.Appliance;
+import edu.ics372.gp1.business.store.Customer;
 
 public class AutomatedTester {
 	private Store store;

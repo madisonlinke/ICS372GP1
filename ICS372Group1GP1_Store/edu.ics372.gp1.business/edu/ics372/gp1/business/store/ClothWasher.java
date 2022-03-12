@@ -4,7 +4,7 @@
  * @author Kean
  *
  */
-package edu.ics372.gp1.store;
+package edu.ics372.gp1.business.store;
 
 public class ClothWasher extends Appliance{
 	private static final long serialVersionUID = 1L;

@@ -1,9 +1,8 @@
-package edu.ics372.gp1.facade;
+package edu.ics372.gp1.business.facade;
 
-// unsure how this matches library example. It appears to not be as reliant on 
-import edu.ics372.gp1.store.Appliance;
-import edu.ics372.gp1.store.Customer;
-import edu.ics372.gp1.store.RepairPlan;
+import edu.ics372.gp1.business.store.Appliance;
+import edu.ics372.gp1.business.store.Customer;
+import edu.ics372.gp1.business.store.RepairPlan;
 
 public abstract class DataTransfer {
 
@@ -125,6 +124,22 @@ public abstract class DataTransfer {
 		applianceStock = appliance.getStock();
 	}
 
+	public double getRepairPlanCost() {
+		return repairPlanCost;
+	}
+
+	public void setRepairPlanCost(double repairPlanCost) {
+		this.repairPlanCost = repairPlanCost;
+	}
+
+	public String getRepairPlanApplianceID() {
+		return repairPlanApplianceID;
+	}
+
+	public void setRepairPlanApplianceID(String repairPlanApplianceID) {
+		this.repairPlanApplianceID = repairPlanApplianceID;
+	}
+
 	public void setRepairPlanFields(RepairPlan repairPlan) {
 		// needs work
 		repairPlanCost = repairPlan.getCost();
@@ -145,6 +160,8 @@ public abstract class DataTransfer {
 		applianceCost = 0;
 		applianceStock = 0;
 		applianceID = "No such model";
+		repairPlanCost = 0;
+		repairPlanApplianceID = "No such plan";
 
 	}
 }
