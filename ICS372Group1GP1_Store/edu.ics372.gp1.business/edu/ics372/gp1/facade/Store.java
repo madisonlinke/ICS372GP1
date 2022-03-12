@@ -82,6 +82,11 @@ public class Store implements Serializable {
 			repairPlans.next().chargePlan();
 		}
 	}
+	
+	/**
+	 * 
+	 */
+	public void purchaseOneOrMoreModels()
 
 	/**
 	 * Adds a given amount, the cost for a repair plan, to the store's repair plan revenue.
