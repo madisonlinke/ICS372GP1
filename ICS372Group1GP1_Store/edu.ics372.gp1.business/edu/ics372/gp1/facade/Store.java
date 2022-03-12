@@ -61,6 +61,14 @@ public class Store implements Serializable {
 		}
 	}
 	
+	/**
+     * Adds customer to list of customers
+     * 
+     * @param name
+     * @param address
+     * @param phoneNumber
+     * @return customer ID
+     */
 	public String addCustomer(String name, String address, String phoneNumber) {
 	    Customer newCustomer = new Customer(name, address, phoneNumber);
 	    CustomerList.getInstance().add(newCustomer);
