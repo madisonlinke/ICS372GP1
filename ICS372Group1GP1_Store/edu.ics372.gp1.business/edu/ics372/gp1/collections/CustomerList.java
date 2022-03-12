@@ -59,7 +59,7 @@ public class CustomerList implements ItemList<Customer, String>, Serializable {
 	}
 
 	public void add(Customer customer) {
-	    customer.setId(CUSTOMER_STRING + idCounter);
+	    customer.setId(CUSTOMER_STRING + idCounter++);
 	    customerList.add(customer);
 	}
 	
