@@ -10,7 +10,7 @@ public abstract class DataTransfer {
 	private String customerName;
 	private String customerAddress;
 	private String customerPhoneNumber;
-	private String customerId;
+	private String customerID;
 	private double customerAccountBalance;
 	private String applianceBrand;
 	private String applianceModel;
@@ -54,11 +54,11 @@ public abstract class DataTransfer {
 	}
 
 	public String getCustomerId() {
-		return customerId;
+		return customerID;
 	}
 
 	public void setCustomerId(String customerId) {
-		this.customerId = customerId;
+		this.customerID = customerId;
 	}
 
 	public double getCustomerAccountBalance() {
@@ -73,7 +73,7 @@ public abstract class DataTransfer {
 		customerName = customer.getName();
 		customerAddress = customer.getAddress();
 		customerPhoneNumber = customer.getPhoneNumber();
-		customerId = customer.getId();
+		customerID = customer.getId();
 		customerAccountBalance = customer.getAccountBalance();
 	}
 
@@ -135,15 +135,15 @@ public abstract class DataTransfer {
 	 * Sets all String fields to "none"
 	 */
 	public void reset() {
-		name = "No such customer";
-		address = "No such customer";
-		phoneNumber = "No such customer";
-		id = "Invalid customer id";
-		accountBalance = 0;
-		brand = "No such model";
-		model = "No such model";
-		cost = 0;
-		stock = 0;
+		customerName = "No such customer";
+		customerAddress = "No such customer";
+		customerPhoneNumber = "No such customer";
+		customerID = "Invalid customer id";
+		customerAccountBalance = 0;
+		applianceBrand = "No such model";
+		applianceModel = "No such model";
+		applianceCost = 0;
+		applianceStock = 0;
 		applianceID = "No such model";
 
 	}
