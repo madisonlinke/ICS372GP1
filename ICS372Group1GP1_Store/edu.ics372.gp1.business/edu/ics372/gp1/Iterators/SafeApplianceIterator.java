@@ -4,13 +4,17 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 import edu.ics372.gp1.facade.Result;
-import edu.ics372.gp1.store.Appliance;
 
 public class SafeApplianceIterator implements Iterator<Result> {
-	private Iterator<Appliance> iterator;
+	private FilteredIterator iterator;
 	private Result result = new Result();
 
-	public SafeApplianceIterator(Iterator<Appliance> iterator) {
+	/**
+	 * The user of SafeIterator must supply an Iterator to Book.
+	 * 
+	 * @param iterator Iterator<Book>
+	 */
+	public SafeApplianceIterator(FilteredIterator iterator) {
 		this.iterator = iterator;
 	}
 
@@ -28,4 +32,5 @@ public class SafeApplianceIterator implements Iterator<Result> {
 		}
 		return result;
 	}
+
 }
