@@ -7,13 +7,13 @@
 package edu.ics372.gp1.collections;
 
 import java.io.Serializable;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
 import edu.ics372.gp1.store.Appliance;
 
-
-public class Inventory implements ItemList<Appliance, String>, Serializable{
+public class Inventory implements ItemList<Appliance, String>, Serializable {
 	/**
 	 * This field stores the singleton Inventory object.
 	 */
@@ -22,15 +22,17 @@ public class Inventory implements ItemList<Appliance, String>, Serializable{
 	 * This field stores all Appliance objects stored in this Inventory.
 	 */
 	private List<Appliance> appliances = new LinkedList<Appliance>();
-	
+
 	private static final String APPLIANCE_STRING = "A";
 	private int idCounter = 1000;
-	
+
 	private Inventory() {
-		
+
 	}
+
 	/**
 	 * This method creates an Inventory if none yet exists.
+	 * 
 	 * @return either the newly created or existing inventory
 	 */
 	public static Inventory getInstance() {
@@ -39,22 +41,30 @@ public class Inventory implements ItemList<Appliance, String>, Serializable{
 		}
 		return inventory;
 	}
+
 	/**
-	 * This method searches the appliances field for an Appliance object with a matching applianceID
+	 * This method searches the appliances field for an Appliance object with a
+	 * matching applianceID
+	 * 
 	 * @return the matching appliance or null, if no match is found.
 	 */
 	@Override
 	public Appliance search(String applianceID) {
-		for (Appliance model: appliances) {
+		for (Appliance model : appliances) {
 			if (model.matches(applianceID)) {
 				return model;
 			}
 		}
 		return null;
 	}
+
+	public Iterator<Appliance> iterator() {
+		return inventory.iterator();
+	}
+
 	@Override
 	public String listAll() {
 		return appliances.toString();
 	}
-	
+
 }
