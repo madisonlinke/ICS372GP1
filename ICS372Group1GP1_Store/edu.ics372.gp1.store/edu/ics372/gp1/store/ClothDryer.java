@@ -7,8 +7,8 @@
 package edu.ics372.gp1.store;
 
 public class ClothDryer extends Appliance{
-
-    private RepairPlan repairPlan;
+	private static final long serialVersionUID = 1L;
+	private RepairPlan repairPlan;
     
     public ClothDryer(String brand, String model, double cost, int stock, String applianceID) {
         super(brand, model, cost, stock, applianceID);
