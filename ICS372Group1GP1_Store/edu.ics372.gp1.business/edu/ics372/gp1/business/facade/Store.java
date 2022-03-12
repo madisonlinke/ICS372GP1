@@ -2,6 +2,8 @@
 package edu.ics372.gp1.business.facade;
 
 import java.io.Serializable;
+import java.util.Iterator;
+import java.util.function.Predicate;
 
 import edu.ics372.gp1.Iterators.FilteredIterator;
 import edu.ics372.gp1.Iterators.SafeApplianceIterator;
