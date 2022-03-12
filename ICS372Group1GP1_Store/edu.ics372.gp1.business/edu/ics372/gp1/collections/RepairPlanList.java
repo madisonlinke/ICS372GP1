@@ -38,9 +38,10 @@ public class RepairPlanList implements ItemList<RepairPlan, String>, Serializabl
 		}
 		return repairPlanList;
 	}
-	
+
 	/**
 	 * Returns an iterator for the list of repair plans.
+	 * 
 	 * @return
 	 */
 	public Iterator<RepairPlan> getRepairPlans() {
@@ -70,6 +71,10 @@ public class RepairPlanList implements ItemList<RepairPlan, String>, Serializabl
 	 */
 	public String listAll() {
 		return repairPlans.toString();
+	}
+
+	public Iterator<RepairPlan> iterator() {
+		return repairPlans.iterator();
 	}
 
 	@Override
