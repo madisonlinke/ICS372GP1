@@ -4,11 +4,13 @@
  * It has the customerList and customers fields.
  * It has the getInstance and search methods.
  */
-package edu.ics372.gp1.store;
+package edu.ics372.gp1.collections;
 
 import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
+
+import edu.ics372.gp1.store.Customer;
 
 public class CustomerList implements ItemList<Customer, String>, Serializable {
 	/**

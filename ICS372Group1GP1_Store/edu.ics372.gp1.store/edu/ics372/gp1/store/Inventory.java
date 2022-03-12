@@ -10,6 +10,8 @@ import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
 
+import edu.ics372.gp1.collections.ItemList;
+
 
 public class Inventory implements ItemList<Appliance, String>, Serializable{
 	/**

@@ -4,12 +4,12 @@ package edu.ics372.gp1.facade;
 import java.io.Serializable;
 import java.util.Iterator;
 
-import edu.ics372.gp1.store.BackorderList;
+import edu.ics372.gp1.collections.BackorderList;
+import edu.ics372.gp1.collections.CustomerList;
+import edu.ics372.gp1.collections.RepairPlanList;
 import edu.ics372.gp1.store.Customer;
-import edu.ics372.gp1.store.CustomerList;
 import edu.ics372.gp1.store.Inventory;
 import edu.ics372.gp1.store.RepairPlan;
-import edu.ics372.gp1.store.RepairPlanList;
 
 public class Store implements Serializable {
 	private static final long serialVersionUID = 1L;

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import edu.ics372.gp1.collections.Matchable;
 import edu.ics372.gp1.facade.Store;
 
 /**

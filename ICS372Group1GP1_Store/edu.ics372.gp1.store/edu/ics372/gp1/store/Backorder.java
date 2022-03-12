@@ -2,6 +2,8 @@ package edu.ics372.gp1.store;
 
 import java.io.Serializable;
 
+import edu.ics372.gp1.collections.Matchable;
+
 public class Backorder implements Matchable<String>, Serializable{
 	String id;
 	Appliance[] appliances;

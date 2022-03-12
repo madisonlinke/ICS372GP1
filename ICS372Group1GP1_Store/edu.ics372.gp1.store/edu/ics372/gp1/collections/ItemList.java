@@ -1,4 +1,4 @@
-package edu.ics372.gp1.store;
+package edu.ics372.gp1.collections;
 
 public interface ItemList<T extends Matchable<K>, K> {
 	/**

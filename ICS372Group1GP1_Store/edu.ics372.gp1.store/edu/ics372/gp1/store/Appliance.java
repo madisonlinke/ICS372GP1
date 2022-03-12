@@ -8,6 +8,8 @@ package edu.ics372.gp1.store;
 
 import java.io.Serializable;
 
+import edu.ics372.gp1.collections.Matchable;
+
 public abstract class Appliance implements Matchable<String>, Serializable {
     
     protected String brand;
