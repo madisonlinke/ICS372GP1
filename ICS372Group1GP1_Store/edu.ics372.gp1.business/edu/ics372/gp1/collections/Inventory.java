@@ -23,6 +23,9 @@ public class Inventory implements ItemList<Appliance, String>, Serializable{
 	 */
 	private List<Appliance> appliances = new LinkedList<Appliance>();
 	
+	private static final String APPLIANCE_STRING = "A";
+	private int idCounter = 1000;
+	
 	private Inventory() {
 		
 	}

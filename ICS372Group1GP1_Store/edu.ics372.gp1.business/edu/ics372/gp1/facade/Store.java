@@ -74,6 +74,8 @@ public class Store implements Serializable {
 	    CustomerList.getInstance().add(newCustomer);
 	    return newCustomer.getId();
 	}
+	
+	//public Appliance addSingleModel()
 
 	/**
 	 * Removes a given customer (by ID) to a repair plan's (by appliance ID) list of
