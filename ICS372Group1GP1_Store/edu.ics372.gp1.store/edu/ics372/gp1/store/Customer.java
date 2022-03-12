@@ -22,8 +22,6 @@ public class Customer implements Matchable<String>, Serializable {
 	private String phoneNumber;
 	private String id;
 	private double accountBalance;
-	private static final String CUSTOMER_STRING = "C";
-	private static int idCounter;
 	private List<Appliance> appliances = new ArrayList<Appliance>();// appliances owned by customer
 	private List<RepairPlan> repairPlansEnrolledIn = new ArrayList<RepairPlan>();
 
@@ -41,7 +39,7 @@ public class Customer implements Matchable<String>, Serializable {
 		this.address = address;
 		this.phoneNumber = phoneNumber;
 		this.accountBalance = 0;
-		id = CUSTOMER_STRING + idCounter++;
+		//this.id = id; since customerList (line 61) sets id think this can be removed
 	}
 
 	public void addAppliance(Appliance appliance) {
@@ -134,11 +132,4 @@ public class Customer implements Matchable<String>, Serializable {
 				+ ", accountBalance=" + accountBalance + "]" + " Enrolled in plan?: " + this.isEnrolledInRepairPlan();
 	}
 
-	public static void save(ObjectOutputStream output) throws IOException {
-		output.writeObject(idCounter);
-	}
-
-	public static void retrieve(ObjectInputStream input) throws IOException, ClassNotFoundException {
-		idCounter = (int) input.readObject();
-	}
 }

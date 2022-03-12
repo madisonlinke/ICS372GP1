@@ -6,9 +6,9 @@ import java.util.Iterator;
 
 import edu.ics372.gp1.collections.BackorderList;
 import edu.ics372.gp1.collections.CustomerList;
-import edu.ics372.gp1.collections.Inventory;
 import edu.ics372.gp1.collections.RepairPlanList;
 import edu.ics372.gp1.store.Customer;
+import edu.ics372.gp1.store.Inventory;
 import edu.ics372.gp1.store.RepairPlan;
 
 public class Store implements Serializable {
@@ -53,6 +53,12 @@ public class Store implements Serializable {
 		} else {
 			return repairPlan.enrollCustomer(customer);
 		}
+	}
+	
+	public String addCustomer(String name, String address, String phoneNumber) {
+	    Customer newCustomer = new Customer(name, address, phoneNumber);
+	    CustomerList.getInstance().add(newCustomer);
+	    return newCustomer.getId();
 	}
 
 	/**
