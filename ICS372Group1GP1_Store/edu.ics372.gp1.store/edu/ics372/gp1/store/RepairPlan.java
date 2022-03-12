@@ -72,6 +72,30 @@ public class RepairPlan implements Matchable<String>, Serializable {
 		}
 	}
 
+	public double getCost() {
+		return cost;
+	}
+
+	public void setCost(double cost) {
+		this.cost = cost;
+	}
+
+	public String getApplianceID() {
+		return applianceID;
+	}
+
+	public void setApplianceID(String applianceID) {
+		this.applianceID = applianceID;
+	}
+
+	public List<Customer> getSubscribers() {
+		return subscribers;
+	}
+
+	public void setSubscribers(List<Customer> subscribers) {
+		this.subscribers = subscribers;
+	}
+
 	@Override
 	public boolean matches(String customerID) {
 		return this.applianceID.equals(customerID);

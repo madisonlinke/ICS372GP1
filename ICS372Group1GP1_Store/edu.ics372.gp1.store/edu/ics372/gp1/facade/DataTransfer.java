@@ -17,6 +17,9 @@ public abstract class DataTransfer {
 	private String applianceID;
 	private double applianceCost;
 	private int applianceStock;
+	private double repairPlanCost;
+	private String repairPlanApplianceID;
+
 	// needs repairplan fields
 
 	/**
@@ -115,11 +118,17 @@ public abstract class DataTransfer {
 	}
 
 	public void setApplianceFields(Appliance appliance) {
-		// needs work
+		applianceBrand = appliance.getBrand();
+		applianceModel = appliance.getModel();
+		applianceID = " ";// what is appliance ID going to be?
+		applianceCost = appliance.getCost();
+		applianceStock = appliance.getStock();
 	}
 
 	public void setRepairPlanFields(RepairPlan repairPlan) {
 		// needs work
+		repairPlanCost = repairPlan.getCost();
+		repairPlanApplianceID = repairPlan.getApplianceID();
 	}
 
 	/**

@@ -1,5 +1,9 @@
 package edu.ics372.gp1.tests;
 
+import edu.ics372.gp1.facade.Request;
+import edu.ics372.gp1.facade.Result;
+import edu.ics372.gp1.facade.Store;
+import edu.ics372.gp1.store.Appliance;
 import edu.ics372.gp1.store.Customer;
 
 public class AutomatedTester {
@@ -27,6 +31,7 @@ public class AutomatedTester {
 		}
 	}
 
+	// add appliance and repair plan
 	public void testAddBook() {
 		for (int count = 0; count < books.length; count++) {
 			Request.instance().setBookAuthor(authors[count]);
