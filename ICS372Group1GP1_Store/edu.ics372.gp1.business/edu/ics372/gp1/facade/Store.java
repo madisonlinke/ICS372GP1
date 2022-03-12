@@ -3,14 +3,18 @@ package edu.ics372.gp1.facade;
 
 import java.io.Serializable;
 import java.util.Iterator;
+import java.util.function.Predicate;
 
+import edu.ics372.gp1.Iterators.FilteredIterator;
 import edu.ics372.gp1.Iterators.SafeApplianceIterator;
 import edu.ics372.gp1.Iterators.SafeCustomerIterator;
 import edu.ics372.gp1.Iterators.SafeRepairPlanIterator;
 import edu.ics372.gp1.collections.BackorderList;
 import edu.ics372.gp1.collections.CustomerList;
 import edu.ics372.gp1.collections.RepairPlanList;
+import edu.ics372.gp1.store.Appliance;
 import edu.ics372.gp1.store.Customer;
+import edu.ics372.gp1.store.Furnace;
 import edu.ics372.gp1.store.Inventory;
 import edu.ics372.gp1.store.RepairPlan;
 
@@ -32,7 +36,7 @@ public class Store implements Serializable {
 
 	/**
 	 * Creates an instance of the Store class, if the singleton field is null.
-	 * 
+	 *
 	 * @return the store field, whether it is created
 	 */
 	public static Store getInstance() {
@@ -46,7 +50,7 @@ public class Store implements Serializable {
 	/**
 	 * Adds a given customer (by ID) to a repair plan's (by appliance ID) list of
 	 * subscribers
-	 * 
+	 *
 	 * @param customerID
 	 * @param applianceID
 	 * @return true if customer successfully enrolled in the plan
@@ -60,29 +64,29 @@ public class Store implements Serializable {
 			return repairPlan.enrollCustomer(customer);
 		}
 	}
-	
+
 	/**
-     * Adds customer to list of customers
-     * 
-     * @param name
-     * @param address
-     * @param phoneNumber
-     * @return customer ID
-     */
+	 * Adds customer to list of customers
+	 *
+	 * @param name
+	 * @param address
+	 * @param phoneNumber
+	 * @return customer ID
+	 */
 	public String addCustomer(String name, String address, String phoneNumber) {
-	    Customer newCustomer = new Customer(name, address, phoneNumber);
-	    CustomerList.getInstance().add(newCustomer);
-	    return newCustomer.getId();
+		Customer newCustomer = new Customer(name, address, phoneNumber);
+		CustomerList.getInstance().add(newCustomer);
+		return newCustomer.getId();
 	}
-	
+
 	//public boolean addToInventory()
-	
+
 	//public Appliance addSingleModel()
 
 	/**
 	 * Removes a given customer (by ID) to a repair plan's (by appliance ID) list of
 	 * subscribers
-	 * 
+	 *
 	 * @param customerID
 	 * @param applianceID
 	 * @return true if customer successfully removed from the plan
@@ -108,16 +112,16 @@ public class Store implements Serializable {
 			repairPlans.next().chargePlan();
 		}
 	}
-	
+
 	/**
-	 * 
+	 *
 	 */
 	public void purchaseOneOrMoreModels()
 
 	/**
 	 * Adds a given amount, the cost for a repair plan, to the store's repair plan
 	 * revenue.
-	 * 
+	 *
 	 * @param cost
 	 */
 	public void addRepairPlanRevenue(double cost) {
@@ -142,7 +146,8 @@ public class Store implements Serializable {
 
 	}
 
-	public Iterator<Result> getAppliances() {
-		return new SafeApplianceIterator(applianceList.iterator());
+	public Iterator<Result> getAppliances(Predicate<Appliance> predicate) {
+		Predicate<Appliance> p1 = ((Appliance a) -> a instanceof Furnace);
+		return new SafeApplianceIterator(new FilteredIterator(inventory.iterator(), predicate));
 	}
 }
