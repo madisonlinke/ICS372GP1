@@ -15,7 +15,7 @@ import edu.ics372.gp1.collections.RepairPlanList;
 import edu.ics372.gp1.store.Appliance;
 import edu.ics372.gp1.store.Customer;
 import edu.ics372.gp1.store.Furnace;
-import edu.ics372.gp1.store.Inventory;
+import edu.ics372.gp1.collections.Inventory;
 import edu.ics372.gp1.store.RepairPlan;
 
 public class Store implements Serializable {
