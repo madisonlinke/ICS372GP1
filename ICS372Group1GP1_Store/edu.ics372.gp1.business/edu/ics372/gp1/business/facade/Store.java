@@ -2,27 +2,19 @@
 package edu.ics372.gp1.business.facade;
 
 import java.io.Serializable;
-import java.util.Iterator;
-import java.util.function.Predicate;
-<<<<<<< HEAD:ICS372Group1GP1_Store/edu.ics372.gp1.business/edu/ics372/gp1/facade/Store.java
 
 import edu.ics372.gp1.Iterators.FilteredIterator;
 import edu.ics372.gp1.Iterators.SafeApplianceIterator;
 import edu.ics372.gp1.Iterators.SafeCustomerIterator;
 import edu.ics372.gp1.Iterators.SafeRepairPlanIterator;
-import edu.ics372.gp1.collections.BackorderList;
-import edu.ics372.gp1.collections.CustomerList;
-import edu.ics372.gp1.collections.Inventory;
-import edu.ics372.gp1.collections.RepairPlanList;
-import edu.ics372.gp1.store.Appliance;
-import edu.ics372.gp1.store.Customer;
-import edu.ics372.gp1.store.Furnace;
-import edu.ics372.gp1.store.RepairPlan;
-=======
-import edu.ics372.gp1.Iterators.*;
-import edu.ics372.gp1.business.collections.*;
-import edu.ics372.gp1.business.store.*;
->>>>>>> 5a58fe0b3b2dfc3ef3e1f10150fa706ee1bbf883:ICS372Group1GP1_Store/edu.ics372.gp1.business/edu/ics372/gp1/business/facade/Store.java
+import edu.ics372.gp1.business.collections.BackorderList;
+import edu.ics372.gp1.business.collections.CustomerList;
+import edu.ics372.gp1.business.collections.Inventory;
+import edu.ics372.gp1.business.collections.RepairPlanList;
+import edu.ics372.gp1.business.store.Appliance;
+import edu.ics372.gp1.business.store.Customer;
+import edu.ics372.gp1.business.store.Furnace;
+import edu.ics372.gp1.business.store.RepairPlan;
 
 public class Store implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -85,9 +77,9 @@ public class Store implements Serializable {
 		return newCustomer.getId();
 	}
 
-	//public boolean addToInventory()
+	// public boolean addToInventory()
 
-	//public Appliance addSingleModel()
+	// public Appliance addSingleModel()
 
 	/**
 	 * Removes a given customer (by ID) to a repair plan's (by appliance ID) list of
