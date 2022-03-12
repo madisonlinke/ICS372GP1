@@ -4,6 +4,9 @@ package edu.ics372.gp1.facade;
 import java.io.Serializable;
 import java.util.Iterator;
 
+import edu.ics372.gp1.Iterators.SafeApplianceIterator;
+import edu.ics372.gp1.Iterators.SafeCustomerIterator;
+import edu.ics372.gp1.Iterators.SafeRepairPlanIterator;
 import edu.ics372.gp1.collections.BackorderList;
 import edu.ics372.gp1.collections.CustomerList;
 import edu.ics372.gp1.collections.RepairPlanList;
@@ -29,7 +32,8 @@ public class Store implements Serializable {
 
 	/**
 	 * Creates an instance of the Store class, if the singleton field is null.
-	 * @return the store field, whether it is created 
+	 * 
+	 * @return the store field, whether it is created
 	 */
 	public static Store getInstance() {
 		if (store == null) {
@@ -40,7 +44,9 @@ public class Store implements Serializable {
 	}
 
 	/**
-	 * Adds a given customer (by ID) to a repair plan's (by appliance ID) list of subscribers
+	 * Adds a given customer (by ID) to a repair plan's (by appliance ID) list of
+	 * subscribers
+	 * 
 	 * @param customerID
 	 * @param applianceID
 	 * @return true if customer successfully enrolled in the plan
@@ -62,7 +68,9 @@ public class Store implements Serializable {
 	}
 
 	/**
-	 * Removes a given customer (by ID) to a repair plan's (by appliance ID) list of subscribers
+	 * Removes a given customer (by ID) to a repair plan's (by appliance ID) list of
+	 * subscribers
+	 * 
 	 * @param customerID
 	 * @param applianceID
 	 * @return true if customer successfully removed from the plan
@@ -79,8 +87,8 @@ public class Store implements Serializable {
 	}
 
 	/**
-	 * Charges each customer for every repair plan, adding the cost to the customer's account balance
-	 * and the store's repair plan revenue
+	 * Charges each customer for every repair plan, adding the cost to the
+	 * customer's account balance and the store's repair plan revenue
 	 */
 	public void chargeAllRepairPlans() {
 		Iterator<RepairPlan> repairPlans = repairPlanList.getRepairPlans();
@@ -88,9 +96,16 @@ public class Store implements Serializable {
 			repairPlans.next().chargePlan();
 		}
 	}
+	
+	/**
+	 * 
+	 */
+	public void purchaseOneOrMoreModels()
 
 	/**
-	 * Adds a given amount, the cost for a repair plan, to the store's repair plan revenue.
+	 * Adds a given amount, the cost for a repair plan, to the store's repair plan
+	 * revenue.
+	 * 
 	 * @param cost
 	 */
 	public void addRepairPlanRevenue(double cost) {
@@ -104,5 +119,18 @@ public class Store implements Serializable {
 
 	public void listAllCustomersRepairPlans() {
 		repairPlanList.listAll();
+	}
+
+	public Iterator<Result> getCustomers() {
+		return new SafeCustomerIterator(customerList.iterator());
+	}
+
+	public Iterator<Result> getRepairPlans() {
+		return new SafeRepairPlanIterator(repairPlanList.iterator());
+
+	}
+
+	public Iterator<Result> getAppliances() {
+		return new SafeApplianceIterator(applianceList.iterator());
 	}
 }
