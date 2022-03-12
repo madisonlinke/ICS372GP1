@@ -1,4 +1,4 @@
-package edu.ics372.gp1.store;
+package edu.ics372.gp1.business.store;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import edu.ics372.gp1.collections.Matchable;
+import edu.ics372.gp1.business.collections.Matchable;
 
 /**
  * @author jpham

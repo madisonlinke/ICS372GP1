@@ -1,18 +1,12 @@
 
-package edu.ics372.gp1.facade;
+package edu.ics372.gp1.business.facade;
 
 import java.io.Serializable;
 import java.util.Iterator;
 
-import edu.ics372.gp1.Iterators.SafeApplianceIterator;
-import edu.ics372.gp1.Iterators.SafeCustomerIterator;
-import edu.ics372.gp1.Iterators.SafeRepairPlanIterator;
-import edu.ics372.gp1.collections.BackorderList;
-import edu.ics372.gp1.collections.CustomerList;
-import edu.ics372.gp1.collections.RepairPlanList;
-import edu.ics372.gp1.store.Customer;
-import edu.ics372.gp1.store.Inventory;
-import edu.ics372.gp1.store.RepairPlan;
+import edu.ics372.gp1.Iterators.*;
+import edu.ics372.gp1.business.collections.*;
+import edu.ics372.gp1.business.store.*;
 
 public class Store implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -141,6 +135,6 @@ public class Store implements Serializable {
 	}
 
 	public Iterator<Result> getAppliances() {
-		return new SafeApplianceIterator(applianceList.iterator());
+		return new SafeApplianceIterator(inventory.iterator());
 	}
 }

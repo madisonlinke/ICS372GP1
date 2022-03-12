@@ -1,4 +1,4 @@
-package edu.ics372.gp1.facade;
+package edu.ics372.gp1.business.facade;
 
 public class Result extends DataTransfer {
 

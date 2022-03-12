@@ -1,9 +1,8 @@
-package edu.ics372.gp1.facade;
+package edu.ics372.gp1.business.facade;
 
-// unsure how this matches library example. It appears to not be as reliant on 
-import edu.ics372.gp1.store.Appliance;
-import edu.ics372.gp1.store.Customer;
-import edu.ics372.gp1.store.RepairPlan;
+import edu.ics372.gp1.business.store.Appliance;
+import edu.ics372.gp1.business.store.Customer;
+import edu.ics372.gp1.business.store.RepairPlan;
 
 public abstract class DataTransfer {
 

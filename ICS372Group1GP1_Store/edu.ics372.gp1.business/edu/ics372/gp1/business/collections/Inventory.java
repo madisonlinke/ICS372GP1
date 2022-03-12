@@ -4,13 +4,13 @@
  * It has the inventory and appliances fields.
  * It has the getInstance and search methods.
  */
-package edu.ics372.gp1.collections;
+package edu.ics372.gp1.business.collections;
 
 import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
 
-import edu.ics372.gp1.store.Appliance;
+import edu.ics372.gp1.business.store.Appliance;
 
 
 public class Inventory implements ItemList<Appliance, String>, Serializable{

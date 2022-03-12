@@ -3,8 +3,8 @@ package edu.ics372.gp1.Iterators;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-import edu.ics372.gp1.facade.Result;
-import edu.ics372.gp1.store.Appliance;
+import edu.ics372.gp1.business.facade.Result;
+import edu.ics372.gp1.business.store.Appliance;
 
 public class SafeApplianceIterator implements Iterator<Result> {
 	private Iterator<Appliance> iterator;
