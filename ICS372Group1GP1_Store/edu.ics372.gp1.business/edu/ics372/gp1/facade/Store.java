@@ -75,6 +75,8 @@ public class Store implements Serializable {
 	    return newCustomer.getId();
 	}
 	
+	//public boolean addToInventory()
+	
 	//public Appliance addSingleModel()
 
 	/**
