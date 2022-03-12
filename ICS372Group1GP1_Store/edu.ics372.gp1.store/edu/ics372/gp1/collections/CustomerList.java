@@ -7,6 +7,7 @@
 package edu.ics372.gp1.collections;
 
 import java.io.Serializable;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -59,6 +60,10 @@ public class CustomerList implements ItemList<Customer, String>, Serializable {
 	 */
 	public String listAll() {
 		return customers.toString();
+	}
+
+	public Iterator<Customer> iterator() {
+		return customers.iterator();
 	}
 
 	@Override
