@@ -18,6 +18,9 @@ public class CustomerList implements ItemList<Customer, String>, Serializable {
 	 * This field stores the singleton CustomerList object.
 	 */
 	private static CustomerList customerList;
+	
+	private static final String CUSTOMER_STRING = "C";
+	private int idCounter = 1000;
 	/**
 	 * This field stores all Customer objects stored in this CustomerList.
 	 */
@@ -55,6 +58,11 @@ public class CustomerList implements ItemList<Customer, String>, Serializable {
 		return null;
 	}
 
+	public void add(Customer customer) {
+	    customer.setId(CUSTOMER_STRING + idCounter++);
+	    customerList.add(customer);
+	}
+	
 	/**
 	 * Method to return list of all customers
 	 */
