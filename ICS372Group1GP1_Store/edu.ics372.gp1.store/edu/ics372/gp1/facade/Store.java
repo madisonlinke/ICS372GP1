@@ -9,9 +9,9 @@ import edu.ics372.gp1.Iterators.SafeCustomerIterator;
 import edu.ics372.gp1.Iterators.SafeRepairPlanIterator;
 import edu.ics372.gp1.collections.BackorderList;
 import edu.ics372.gp1.collections.CustomerList;
+import edu.ics372.gp1.collections.Inventory;
 import edu.ics372.gp1.collections.RepairPlanList;
 import edu.ics372.gp1.store.Customer;
-import edu.ics372.gp1.store.Inventory;
 import edu.ics372.gp1.store.RepairPlan;
 
 public class Store implements Serializable {
