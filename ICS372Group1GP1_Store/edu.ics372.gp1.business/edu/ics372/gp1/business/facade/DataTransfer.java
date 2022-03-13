@@ -52,11 +52,11 @@ public abstract class DataTransfer {
 		this.customerPhoneNumber = customerPhoneNumber;
 	}
 
-	public String getCustomerId() {
+	public String getCustomerID() {
 		return customerID;
 	}
 
-	public void setCustomerId(String customerId) {
+	public void setCustomerID(String customerId) {
 		this.customerID = customerId;
 	}
 
