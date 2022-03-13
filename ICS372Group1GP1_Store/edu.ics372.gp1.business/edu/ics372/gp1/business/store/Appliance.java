@@ -30,12 +30,15 @@ public abstract class Appliance implements Matchable<String>, Serializable {
         this.applianceID = applianceID;
     }
     
-    public void addStock() {
-        //NEEDS WORK
+    public void addStock(int quantity) {
+        stock += quantity;
     }
     
-    public void removeStock() {
-        //NEEDS WORK
+    public void removeStock(int quantity) {
+    	if (stock < quantity) {
+    		throw new IllegalArgumentException("Stock cannot be less than 0.");
+    	}
+        stock -= quantity;
     }
     
     public String getBrand() {

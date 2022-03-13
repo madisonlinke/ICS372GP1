@@ -81,9 +81,9 @@ public class Store implements Serializable {
 	 * @param applianceID
 	 * @return true if customer successfully removed from the plan
 	 */
-	public boolean withdrawFromRepairPlan(String customerID, String applianceID) {
-		Customer customer = customerList.search(customerID);
-		RepairPlan repairPlan = repairPlanList.search(applianceID);
+	public boolean withdrawFromRepairPlan(Request request) {
+		Customer customer = customerList.search(request.getCustomerID());
+		RepairPlan repairPlan = repairPlanList.search(request.getApplianceID());
 		if (customer.equals(null) || repairPlan.equals(null)) {
 			return false;
 		} else {
@@ -110,8 +110,32 @@ public class Store implements Serializable {
 	/**
 	 *
 	 */
-	public void purchaseOneOrMoreModels() {
+	public Result purchaseOneOrMoreModels(Request request) {
+		Result result = new Result();
+		Appliance purchase = inventory.search(request.getApplianceID());
+		int quantity = request.getPurchaseQuantity();
+		int stock = purchase.getStock();
+		double cost = purchase.getCost();
+		if (purchase == null) {
+			result.setResultCode(Result.OPERATION_FAILED);
+		}
+		else {
+			if (stock >= quantity) {
+				purchase.removeStock(quantity);
+				addSalesRevenue(quantity * cost);
+				result.setResultCode(Result.OPERATION_COMPLETED);
+			}
+			else {
+				if (purchase instanceof Furnace) {
+					addSalesRevenue(stock * cost);
+					result.setInsufficientFurnaceStock(quantity - stock);
+					purchase.removeStock(stock);
+					
+				}
+			}
+		}
 		
+		return result;
 	}
 
 	/**
@@ -122,6 +146,10 @@ public class Store implements Serializable {
 	 */
 	public void addRepairPlanRevenue(double cost) {
 		repairPlanRevenue += cost;
+	}
+	
+	public void addSalesRevenue(double cost) {
+		salesRevenue += cost;
 	}
 
 	// needs testing
