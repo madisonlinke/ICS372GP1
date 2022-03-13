@@ -21,6 +21,10 @@ public abstract class DataTransfer {
 	private int backorderQuantity;
 	private int purchaseQuantity;
 	private int insufficientFurnaceStock;
+
+	private int maxHeatOutput;
+	private int capacity;
+
 	private String backorderID;
 
 	// needs repairplan fields
@@ -139,11 +143,11 @@ public abstract class DataTransfer {
 	public String getRepairPlanApplianceID() {
 		return repairPlanApplianceID;
 	}
-	
+
 	public void setBackorderQuantity(int quantity) {
 		backorderQuantity = quantity;
 	}
-	
+
 	public int getBackorderQuantity() {
 		return backorderQuantity;
 	}
@@ -180,6 +184,22 @@ public abstract class DataTransfer {
 		// needs work
 		repairPlanCost = repairPlan.getCost();
 		repairPlanApplianceID = repairPlan.getApplianceID();
+	}
+
+	public int getMaxHeatOutput() {
+		return maxHeatOutput;
+	}
+
+	public void setMaxHeatOutput(int maxHeatOutput) {
+		this.maxHeatOutput = maxHeatOutput;
+	}
+
+	public int getCapacity() {
+		return capacity;
+	}
+
+	public void setCapacity(int capacity) {
+		this.capacity = capacity;
 	}
 
 	/**

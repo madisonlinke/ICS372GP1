@@ -99,8 +99,21 @@ public class Store implements Serializable {
 	public Result addAppliance(Request request) {
 		Result result = new Result();
 		Appliance appliance = new Appliance(request.getApplianceBrand(), request.getApplianceModel(),
-				request.getApplianceCost(), request.);
-		if (customerList.add(customer)) {
+				request.getApplianceCost(), request.getApplianceID());
+		if (customerList.add(appliance)) {
+			result.setResultCode(Result.OPERATION_COMPLETED);
+			result.setCustomerFields(customer);
+			return result;
+		}
+		result.setResultCode(Result.OPERATION_FAILED);
+		return result;
+	}
+
+	public Result addFurnace(Request request) {
+		Result result = new Result();
+		Furnace furnace = new Furnace(request.getApplianceBrand(), request.getApplianceModel(),
+				request.getApplianceCost(), request.getApplianceID());
+		if (customerList.add(appliance)) {
 			result.setResultCode(Result.OPERATION_COMPLETED);
 			result.setCustomerFields(customer);
 			return result;
