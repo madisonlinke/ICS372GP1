@@ -103,6 +103,10 @@ public class Store implements Serializable {
 		}
 	}
 
+	public double printRevenue() {
+		return salesRevenue + repairPlanRevenue;
+	}
+
 	/**
 	 *
 	 */
