@@ -23,11 +23,10 @@ public abstract class Appliance implements Matchable<String>, Serializable {
         return this.applianceID.equals(customerID);
     }
     
-    public Appliance(String brand, String model, double cost, int stock, String applianceID) {
+    public Appliance(String brand, String model, double cost, String applianceID) {
         this.brand = brand;
         this.model = model;
         this.cost = cost;
-        this.stock = stock;
         this.applianceID = applianceID;
     }
     
