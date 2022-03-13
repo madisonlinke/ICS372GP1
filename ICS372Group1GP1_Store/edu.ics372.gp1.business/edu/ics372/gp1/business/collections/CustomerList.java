@@ -14,17 +14,17 @@ import java.util.List;
 import edu.ics372.gp1.business.store.Customer;
 
 public class CustomerList implements ItemList<Customer, String>, Serializable {
-    
+
 	/**
 	 * This field stores the singleton CustomerList object.
 	 */
 	private static CustomerList customerList;
-	
+
 	/**
 	 * This field stores all Customer objects stored in this CustomerList.
 	 */
 	private List<Customer> customers = new LinkedList<Customer>();
-	
+
 	private static final String CUSTOMER_STRING = "C";
 	private int idCounter = 1000;
 
@@ -61,15 +61,16 @@ public class CustomerList implements ItemList<Customer, String>, Serializable {
 	}
 
 	/**
-     * Add customer to customerList
-     * 
-     * @param customer
-     */
-	public void add(Customer customer) {
-	    customer.setId(CUSTOMER_STRING + idCounter++);
-	    customerList.add(customer);
+	 * Add customer to customerList
+	 * 
+	 * @param customer
+	 */
+	public Boolean add(Customer customer) {
+		customer.setId(CUSTOMER_STRING + idCounter++);
+		customers.add(customer);
+		return true;
 	}
-	
+
 	/**
 	 * Method to return list of all customers
 	 */
