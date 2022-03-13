@@ -4,19 +4,9 @@ package edu.ics372.gp1.business.facade;
 import java.io.Serializable;
 import java.util.Iterator;
 import java.util.function.Predicate;
-
-import edu.ics372.gp1.Iterators.FilteredIterator;
-import edu.ics372.gp1.Iterators.SafeApplianceIterator;
-import edu.ics372.gp1.Iterators.SafeCustomerIterator;
-import edu.ics372.gp1.Iterators.SafeRepairPlanIterator;
-import edu.ics372.gp1.business.collections.BackorderList;
-import edu.ics372.gp1.business.collections.CustomerList;
-import edu.ics372.gp1.business.collections.Inventory;
-import edu.ics372.gp1.business.collections.RepairPlanList;
-import edu.ics372.gp1.business.store.Appliance;
-import edu.ics372.gp1.business.store.Customer;
-import edu.ics372.gp1.business.store.Furnace;
-import edu.ics372.gp1.business.store.RepairPlan;
+import edu.ics372.gp1.Iterators.*;
+import edu.ics372.gp1.business.collections.*;
+import edu.ics372.gp1.business.store.*;
 
 public class Store implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -79,9 +69,9 @@ public class Store implements Serializable {
 		return newCustomer.getId();
 	}
 
-	// public boolean addToInventory()
+	//public boolean addToInventory()
 
-	// public Appliance addSingleModel()
+	//public Appliance addSingleModel()
 
 	/**
 	 * Removes a given customer (by ID) to a repair plan's (by appliance ID) list of
@@ -117,6 +107,7 @@ public class Store implements Serializable {
 	 *
 	 */
 	public void purchaseOneOrMoreModels() {
+		
 	}
 
 	/**
@@ -147,9 +138,8 @@ public class Store implements Serializable {
 
 	}
 
-	public Iterator<Result> getFilteredAppliances(Predicate<Appliance> predicate) {
+	public Iterator<Result> getAppliances(Predicate<Appliance> predicate) {
 		Predicate<Appliance> p1 = ((Appliance a) -> a instanceof Furnace);
-		return new SafeApplianceIterator(new FilteredIterator(inventory.iterator(), p1));
+		return new SafeApplianceIterator(new FilteredIterator(inventory.iterator(), predicate));
 	}
-
 }
