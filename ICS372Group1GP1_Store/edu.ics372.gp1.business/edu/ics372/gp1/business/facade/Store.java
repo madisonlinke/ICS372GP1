@@ -4,9 +4,19 @@ package edu.ics372.gp1.business.facade;
 import java.io.Serializable;
 import java.util.Iterator;
 import java.util.function.Predicate;
-import edu.ics372.gp1.Iterators.*;
-import edu.ics372.gp1.business.collections.*;
-import edu.ics372.gp1.business.store.*;
+
+import edu.ics372.gp1.Iterators.FilteredIterator;
+import edu.ics372.gp1.Iterators.SafeApplianceIterator;
+import edu.ics372.gp1.Iterators.SafeCustomerIterator;
+import edu.ics372.gp1.Iterators.SafeRepairPlanIterator;
+import edu.ics372.gp1.business.collections.BackorderList;
+import edu.ics372.gp1.business.collections.CustomerList;
+import edu.ics372.gp1.business.collections.Inventory;
+import edu.ics372.gp1.business.collections.RepairPlanList;
+import edu.ics372.gp1.business.store.Appliance;
+import edu.ics372.gp1.business.store.Customer;
+import edu.ics372.gp1.business.store.Furnace;
+import edu.ics372.gp1.business.store.RepairPlan;
 
 public class Store implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -65,13 +75,39 @@ public class Store implements Serializable {
 	 */
 	public String addCustomer(String name, String address, String phoneNumber) {
 		Customer newCustomer = new Customer(name, address, phoneNumber);
-		CustomerList.getInstance().add(newCustomer);
+		customerList.add(newCustomer);
 		return newCustomer.getId();
 	}
 
-	//public boolean addToInventory()
+	public Result addCustomer(Request request) {
+		Result result = new Result();
+		Customer customer = new Customer(request.getCustomerName(), request.getCustomerAddress(),
+				request.getCustomerPhoneNumber());
+		if (customerList.add(customer)) {
+			result.setResultCode(Result.OPERATION_COMPLETED);
+			result.setCustomerFields(customer);
+			return result;
+		}
+		result.setResultCode(Result.OPERATION_FAILED);
+		return result;
+	}
 
-	//public Appliance addSingleModel()
+	// public boolean addToInventory()
+
+	// public Appliance addSingleModel()
+
+	public Result addAppliance(Request request) {
+		Result result = new Result();
+		Appliance appliance = new Appliance(request.getApplianceBrand(), request.getApplianceModel(),
+				request.getApplianceCost(), request.);
+		if (customerList.add(customer)) {
+			result.setResultCode(Result.OPERATION_COMPLETED);
+			result.setCustomerFields(customer);
+			return result;
+		}
+		result.setResultCode(Result.OPERATION_FAILED);
+		return result;
+	}
 
 	/**
 	 * Removes a given customer (by ID) to a repair plan's (by appliance ID) list of
@@ -110,6 +146,10 @@ public class Store implements Serializable {
 	/**
 	 *
 	 */
+
+	public void purchaseOneOrMoreModels() {
+	}
+
 	public Result purchaseOneOrMoreModels(Request request) {
 		Result result = new Result();
 		Appliance purchase = inventory.search(request.getApplianceID());
@@ -118,23 +158,21 @@ public class Store implements Serializable {
 		double cost = purchase.getCost();
 		if (purchase == null) {
 			result.setResultCode(Result.OPERATION_FAILED);
-		}
-		else {
+		} else {
 			if (stock >= quantity) {
 				purchase.removeStock(quantity);
 				addSalesRevenue(quantity * cost);
 				result.setResultCode(Result.OPERATION_COMPLETED);
-			}
-			else {
+			} else {
 				if (purchase instanceof Furnace) {
 					addSalesRevenue(stock * cost);
 					result.setInsufficientFurnaceStock(quantity - stock);
 					purchase.removeStock(stock);
-					
+
 				}
 			}
 		}
-		
+
 		return result;
 	}
 
@@ -147,7 +185,7 @@ public class Store implements Serializable {
 	public void addRepairPlanRevenue(double cost) {
 		repairPlanRevenue += cost;
 	}
-	
+
 	public void addSalesRevenue(double cost) {
 		salesRevenue += cost;
 	}
@@ -174,4 +212,5 @@ public class Store implements Serializable {
 		Predicate<Appliance> p1 = ((Appliance a) -> a instanceof Furnace);
 		return new SafeApplianceIterator(new FilteredIterator(inventory.iterator(), predicate));
 	}
+
 }
