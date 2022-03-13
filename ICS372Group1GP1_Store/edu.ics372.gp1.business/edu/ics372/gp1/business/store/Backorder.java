@@ -5,36 +5,30 @@ import java.io.Serializable;
 import edu.ics372.gp1.business.collections.Matchable;
 
 public class Backorder implements Matchable<String>, Serializable{
-	String id;
-	Appliance[] appliances;
-	int[] quantities;
+	String backorderID;
+	Appliance appliance;
+	int quantity;
 	
-	public Backorder(Appliance[] appliances, int[] quantities) {
-		this.appliances = appliances;
-		this.quantities = quantities;
+	public Backorder(Appliance appliance, int quantity) {
+		this.appliance = appliance;
+		this.quantity = quantity;
 	}
 	
 	@Override
-	public boolean matches(String other) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean matches(String match) {
+		return backorderID.equals(match);
 	}
 
-	public Appliance[] getAppliances() {
-		return appliances;
+	public Appliance getAppliances() {
+		return appliance;
 	}
 	
-	public int[] getQuantities() {
-		return quantities;
+	public int getQuantity() {
+		return quantity;
 	}
 	
 	@Override
 	public String toString() {
-		String print = "Backorder: " + id + "\n";
-		for (int index = 0; index < appliances.length; index++) {		
-			print += "Appliance: " + appliances[index].getApplianceID() + 
-			" Quantity: " + quantities[index] + "\n";
-		}
-		return print;
+		return "Backorder ID: " + backorderID + ", Appliance ID: " + appliance.getID();
 	}
 }

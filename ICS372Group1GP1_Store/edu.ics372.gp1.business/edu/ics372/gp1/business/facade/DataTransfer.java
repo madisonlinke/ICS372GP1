@@ -18,6 +18,9 @@ public abstract class DataTransfer {
 	private int applianceStock;
 	private double repairPlanCost;
 	private String repairPlanApplianceID;
+	private int backorderQuantity;
+	private int purchaseQuantity;
+	private int insufficientFurnaceStock;
 
 	// needs repairplan fields
 
@@ -134,6 +137,30 @@ public abstract class DataTransfer {
 
 	public String getRepairPlanApplianceID() {
 		return repairPlanApplianceID;
+	}
+	
+	public void setBackorderQuantity(int quantity) {
+		backorderQuantity = quantity;
+	}
+	
+	public int getBackorderQuantity() {
+		return backorderQuantity;
+	}
+
+	public int getPurchaseQuantity() {
+		return purchaseQuantity;
+	}
+
+	public void setPurchaseQuantity(int purchaseQuantity) {
+		this.purchaseQuantity = purchaseQuantity;
+	}
+
+	public int getInsufficientFurnaceStock() {
+		return insufficientFurnaceStock;
+	}
+
+	public void setInsufficientFurnaceStock(int insufficientFurnaceStock) {
+		this.insufficientFurnaceStock = insufficientFurnaceStock;
 	}
 
 	public void setRepairPlanApplianceID(String repairPlanApplianceID) {
