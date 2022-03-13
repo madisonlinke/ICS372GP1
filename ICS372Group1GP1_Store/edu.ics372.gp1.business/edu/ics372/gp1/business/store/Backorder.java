@@ -9,9 +9,10 @@ public class Backorder implements Matchable<String>, Serializable{
 	Appliance appliance;
 	int quantity;
 	
-	public Backorder(Appliance appliance, int quantity) {
+	public Backorder(Appliance appliance, int quantity, String backorderID) {
 		this.appliance = appliance;
 		this.quantity = quantity;
+		this.backorderID = backorderID;
 	}
 	
 	@Override
@@ -29,6 +30,6 @@ public class Backorder implements Matchable<String>, Serializable{
 	
 	@Override
 	public String toString() {
-		return "Backorder ID: " + backorderID + ", Appliance ID: " + appliance.getID();
+		return "Backorder ID: " + backorderID + ", Appliance ID: " + appliance.getApplianceID() + " Quantity: " + quantity;
 	}
 }
