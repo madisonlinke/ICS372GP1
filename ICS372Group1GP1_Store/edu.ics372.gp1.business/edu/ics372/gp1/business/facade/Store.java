@@ -130,7 +130,13 @@ public class Store implements Serializable {
 					addSalesRevenue(stock * cost);
 					result.setInsufficientFurnaceStock(quantity - stock);
 					purchase.removeStock(stock);
-					
+					result.setResultCode(Result.INSUFFICIENT_STOCK);
+				}
+				else {
+					addSalesRevenue(quantity * cost);
+					purchase.removeStock(stock);
+					request.setBackorderQuantity(quantity - stock);
+					request.setBackorderID(backorderList.addBackorder(purchase, quantity - stock));
 				}
 			}
 		}

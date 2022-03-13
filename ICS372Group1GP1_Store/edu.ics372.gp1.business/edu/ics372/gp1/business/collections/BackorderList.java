@@ -10,6 +10,7 @@ import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
 
+import edu.ics372.gp1.business.store.Appliance;
 import edu.ics372.gp1.business.store.Backorder;
 
 public class BackorderList implements ItemList<Backorder, String>, Serializable {
@@ -21,6 +22,8 @@ public class BackorderList implements ItemList<Backorder, String>, Serializable 
 	 * This field stores all Backorder objects stored in this BackorderList.
 	 */
 	private List<Backorder> backorders = new LinkedList<Backorder>();
+	private static String BACKORDER_STRING = "B";
+	private int idCounter = 1000;
 	
 	private BackorderList() {
 		
@@ -35,6 +38,13 @@ public class BackorderList implements ItemList<Backorder, String>, Serializable 
 		}
 		return backorderList;
 	}
+	
+	public String addBackorder(Appliance appliance, int quantity) {
+		String backorderID =  BACKORDER_STRING + idCounter++;
+		backorders.add(new Backorder(appliance, quantity, backorderID));
+		return backorderID;
+	}
+	
 	/**
 	 * This method searches the appliances field for an Backorder object with a matching backorderID
 	 * @return the matching Backorder or null, if no match is found.
