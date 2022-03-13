@@ -11,7 +11,11 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
+import edu.ics372.gp1.business.facade.Request;
+import edu.ics372.gp1.business.facade.Result;
 import edu.ics372.gp1.business.store.Appliance;
+import edu.ics372.gp1.business.store.Furnace;
+import edu.ics372.gp1.business.store.KitchenRange;
 
 public class Inventory implements ItemList<Appliance, String>, Serializable {
 	/**
@@ -66,5 +70,34 @@ public class Inventory implements ItemList<Appliance, String>, Serializable {
 	public String listAll() {
 		return appliances.toString();
 	}
+
+	public Result addFurnace(Request request) {
+		Result result = new Result();
+		Furnace furnace = new Furnace(request.getApplianceBrand(), request.getApplianceModel(),
+				request.getApplianceCost(), request.getApplianceID(), request.getMaxHeatOutput());
+		if (appliances.add(furnace)) {
+			result.setResultCode(Result.OPERATION_COMPLETED);
+			result.setFurnaceFields(furnace);
+			return result;
+		}
+		result.setResultCode(Result.OPERATION_FAILED);
+		return result;
+	}
+
+	public Result addKitchenRange(Request request) {
+		Result result = new Result();
+		KitchenRange kitchenRange = new KitchenRange(request.getApplianceBrand(), request.getApplianceModel(),
+				request.getApplianceCost());
+		kitchenRange.setApplianceID(APPLIANCE_STRING + idCounter++);
+		if (appliances.add(kitchenRange)) {
+			result.setResultCode(Result.OPERATION_COMPLETED);
+			result.setApplianceFields(kitchenRange);
+			return result;
+		}
+		result.setResultCode(Result.OPERATION_FAILED);
+		return result;
+	}
+	// (String brand, String model, double cost, String applianceID, int
+	// maxHeatOutput
 
 }

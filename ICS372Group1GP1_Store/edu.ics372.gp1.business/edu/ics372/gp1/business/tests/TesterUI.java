@@ -42,10 +42,10 @@ public class TesterUI {
 		Request.instance().setApplianceBrand(getName("Enter Appliance Brand"));
 		Request.instance().setApplianceModel(getName("Enter Appliance Model"));
 		Request.instance().setApplianceCost(getDouble("Enter Cost"));
-
-		applianceType = getInt("Enter Appliance Type");
 		System.out.println("1 = furnace");
 		System.out.println("2 = Refrigerator");
+		applianceType = getInt("Enter Appliance Type");
+
 		switch (applianceType) {
 		case 1:
 			addFurnace();
@@ -54,7 +54,7 @@ public class TesterUI {
 			addRefrigerator();
 			break;
 		case 3:
-
+			addKitchenRange();
 			break;
 		}
 
@@ -62,7 +62,7 @@ public class TesterUI {
 
 	public void addFurnace() {
 		Request.instance().setMaxHeatOutput(Integer.parseInt(getName("Enter Max Heat Output")));
-		Result result = s1.addAppliance(Request.instance());
+		Result result = s1.addFurnace(Request.instance());
 		if (result.getResultCode() != Result.OPERATION_COMPLETED) {
 			System.out.println("Could not add member");
 		} else {
@@ -76,7 +76,17 @@ public class TesterUI {
 		if (result.getResultCode() != Result.OPERATION_COMPLETED) {
 			System.out.println("Could not add member");
 		} else {
-			System.out.println(result.getCustomerName() + "'s id is " + result.getCustomerID());
+			System.out.println(result.getApplianceModel() + "'s id is " + result.getApplianceID());
+		}
+	}
+
+	public void addKitchenRange() {
+
+		Result result = s1.addKitchenRange(Request.instance());
+		if (result.getResultCode() != Result.OPERATION_COMPLETED) {
+			System.out.println("Could not add member");
+		} else {
+			System.out.println(result.getApplianceModel() + "'s id is " + result.getApplianceID());
 		}
 	}
 
@@ -95,7 +105,7 @@ public class TesterUI {
 			System.out.println(result.getCustomerName() + "'s id is " + result.getCustomerID());
 		}
 	}
-	
+
 	public void purchaseModels() {
 		do {
 			Request.instance().setApplianceID(getName("Enter the appliance ID."));
@@ -175,7 +185,7 @@ public class TesterUI {
 		getCustomer();
 		addAppliance();
 	}
-	
+
 	private boolean yesOrNo(String prompt) {
 		String more = getName(prompt + " (Y|y)[es] or anything else for no");
 		if (more.charAt(0) != 'y' && more.charAt(0) != 'Y') {

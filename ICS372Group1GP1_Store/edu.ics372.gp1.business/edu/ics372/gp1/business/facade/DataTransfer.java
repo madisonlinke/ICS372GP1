@@ -2,6 +2,7 @@ package edu.ics372.gp1.business.facade;
 
 import edu.ics372.gp1.business.store.Appliance;
 import edu.ics372.gp1.business.store.Customer;
+import edu.ics372.gp1.business.store.Furnace;
 import edu.ics372.gp1.business.store.RepairPlan;
 
 public abstract class DataTransfer {
@@ -130,6 +131,15 @@ public abstract class DataTransfer {
 		applianceID = " ";// what is appliance ID going to be?
 		applianceCost = appliance.getCost();
 		applianceStock = appliance.getStock();
+	}
+
+	public void setFurnaceFields(Furnace furnace) {
+		applianceBrand = furnace.getBrand();
+		applianceModel = furnace.getModel();
+		applianceID = furnace.getApplianceID();// what is appliance ID going to be?
+		applianceCost = furnace.getCost();
+		applianceStock = furnace.getStock();
+		maxHeatOutput = furnace.getMaxHeatOutput();
 	}
 
 	public double getRepairPlanCost() {

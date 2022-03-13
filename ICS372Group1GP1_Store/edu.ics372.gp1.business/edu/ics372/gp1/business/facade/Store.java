@@ -96,31 +96,15 @@ public class Store implements Serializable {
 
 	// public Appliance addSingleModel()
 
-	public Result addAppliance(Request request) {
-		Result result = new Result();
-		Appliance appliance = new Appliance(request.getApplianceBrand(), request.getApplianceModel(),
-				request.getApplianceCost(), request.getApplianceID());
-		if (customerList.add(appliance)) {
-			result.setResultCode(Result.OPERATION_COMPLETED);
-			result.setCustomerFields(customer);
-			return result;
-		}
-		result.setResultCode(Result.OPERATION_FAILED);
-		return result;
+	public Result addFurnace(Request request) {
+		return inventory.addFurnace(request);
 	}
 
-	public Result addFurnace(Request request) {
-		Result result = new Result();
-		Furnace furnace = new Furnace(request.getApplianceBrand(), request.getApplianceModel(),
-				request.getApplianceCost(), request.getApplianceID());
-		if (customerList.add(appliance)) {
-			result.setResultCode(Result.OPERATION_COMPLETED);
-			result.setCustomerFields(customer);
-			return result;
-		}
-		result.setResultCode(Result.OPERATION_FAILED);
-		return result;
+	public Result addKitchenRange(Request request) {
+		return inventory.addKitchenRange(request);
 	}
+	// (String brand, String model, double cost, String applianceID, int
+	// maxHeatOutput
 
 	/**
 	 * Removes a given customer (by ID) to a repair plan's (by appliance ID) list of
@@ -182,8 +166,7 @@ public class Store implements Serializable {
 					result.setInsufficientFurnaceStock(quantity - stock);
 					purchase.removeStock(stock);
 					result.setResultCode(Result.INSUFFICIENT_STOCK);
-				}
-				else {
+				} else {
 					addSalesRevenue(quantity * cost);
 					purchase.removeStock(stock);
 					request.setBackorderQuantity(quantity - stock);
