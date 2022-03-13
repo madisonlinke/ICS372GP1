@@ -41,9 +41,9 @@ public class TesterUI {
 	public void addAppliance() {
 		Request.instance().setApplianceBrand(getName("Enter Appliance Brand"));
 		Request.instance().setApplianceModel(getName("Enter Appliance Model"));
-		Request.instance().setApplianceCost(getNumberDouble("Enter Cost"));
+		Request.instance().setApplianceCost(getDouble("Enter Cost"));
 
-		applianceType = getNumberInt("Enter Appliance Type");
+		applianceType = getInt("Enter Appliance Type");
 		System.out.println("1 = furnace");
 		System.out.println("2 = Refrigerator");
 		switch (applianceType) {
@@ -98,8 +98,8 @@ public class TesterUI {
 	
 	public void purchaseModels() {
 		do {
-			Request.instance().setApplianceID(getName("Enter the appliance ID"));
-			Request.instance().setBackorderQuantity();
+			Request.instance().setApplianceID(getName("Enter the appliance ID."));
+			Request.instance().setBackorderQuantity(getInt("Enter the quantity to order."));
 		} while (yesOrNo("Would you like to order another appliance?"));
 	}
 
@@ -116,7 +116,7 @@ public class TesterUI {
 
 	}
 
-	public double getNumberDouble(String prompt) {
+	public double getDouble(String prompt) {
 		do {
 			try {
 				String item = getToken(prompt);
@@ -128,7 +128,7 @@ public class TesterUI {
 		} while (true);
 	}
 
-	public int getNumberInt(String prompt) {
+	public int getInt(String prompt) {
 		do {
 			try {
 				String item = getToken(prompt);
