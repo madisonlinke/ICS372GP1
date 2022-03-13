@@ -7,8 +7,8 @@ public class Furnace extends Appliance {
 	private static final long serialVersionUID = 1L;
 	private int maxHeatOutput;
 
-	public Furnace(String brand, String model, double cost, int stock, String applianceID, int maxHeatOutput) {
-		super(brand, model, cost, stock, applianceID);
+	public Furnace(String brand, String model, double cost, String applianceID, int maxHeatOutput) {
+		super(brand, model, cost, applianceID);
 		this.maxHeatOutput = maxHeatOutput;
 	}
 
