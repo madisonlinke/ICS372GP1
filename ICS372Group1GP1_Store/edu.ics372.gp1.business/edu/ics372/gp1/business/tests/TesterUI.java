@@ -60,6 +60,13 @@ public class TesterUI {
 			System.out.println(result.getCustomerName() + "'s id is " + result.getCustomerID());
 		}
 	}
+	
+	public void purchaseModels() {
+		do {
+			Request.instance().setApplianceID(getName("Enter the appliance ID"));
+			Request.instance().setBackorderQuantity();
+		} while (yesOrNo("Would you like to order another appliance?"));
+	}
 
 	public String getName(String prompt) {
 		do {
@@ -92,6 +99,14 @@ public class TesterUI {
 		Iterator<Result> itr = s1.getCustomers();
 
 		getCustomer();
+	}
+	
+	private boolean yesOrNo(String prompt) {
+		String more = getName(prompt + " (Y|y)[es] or anything else for no");
+		if (more.charAt(0) != 'y' && more.charAt(0) != 'Y') {
+			return false;
+		}
+		return true;
 	}
 
 	public static void main(String[] args) {
