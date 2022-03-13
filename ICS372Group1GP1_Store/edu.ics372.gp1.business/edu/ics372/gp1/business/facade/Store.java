@@ -154,7 +154,7 @@ public class Store implements Serializable {
 		int stock = purchase.getStock();
 		double cost = purchase.getCost();
 		if (purchase == null) {
-			result.setResultCode(Result.OPERATION_FAILED);
+			result.setResultCode(Result.APPLIANCE_NOT_FOUND);
 		} else {
 			if (stock >= quantity) {
 				purchase.removeStock(quantity);
