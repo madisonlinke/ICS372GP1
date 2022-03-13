@@ -96,11 +96,16 @@ public class TesterUI {
 		}
 	}
 	
-	public void purchaseModels() {
+	/**
+	 * Purchases a model and the quantity of that model based on input from the user.
+	 * The user is then asked if they wish to order another model.
+	 */
+	public void purchaseOneOrMoreModels() {
 		do {
 			Request.instance().setApplianceID(getName("Enter the appliance ID."));
 			Request.instance().setBackorderQuantity(getInt("Enter the quantity to order."));
-		} while (yesOrNo("Would you like to order another appliance?"));
+			
+		} while (yesOrNo("Would you like to order another model?"));
 	}
 
 	public String getName(String prompt) {
