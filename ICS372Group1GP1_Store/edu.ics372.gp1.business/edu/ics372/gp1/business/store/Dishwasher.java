@@ -4,8 +4,8 @@ public class Dishwasher extends Appliance{
 
 	private static final long serialVersionUID = 1L;
 
-	public Dishwasher(String brand, String model, double cost, int stock, String applianceID) {
-		super(brand, model, cost, stock, applianceID);
+	public Dishwasher(String brand, String model, double cost, String applianceID) {
+		super(brand, model, cost, applianceID);
 	}
 	
 	 @Override
