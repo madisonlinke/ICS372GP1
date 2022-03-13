@@ -10,8 +10,8 @@ public class ClothWasher extends Appliance{
 	private static final long serialVersionUID = 1L;
 	private RepairPlan repairPlan;
     
-    public ClothWasher(String brand, String model, double cost, int stock, String applianceID) {
-        super(brand, model, cost, stock, applianceID);
+    public ClothWasher(String brand, String model, double cost, String applianceID) {
+        super(brand, model, cost, applianceID);
     }
     
     public void enrollRepairPlan(RepairPlan repairPlan) {

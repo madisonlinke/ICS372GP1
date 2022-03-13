@@ -11,8 +11,8 @@ public class Refrigerator extends Appliance{
     private int capacity;
     private static final long serialVersionUID = 1L;
     
-    public Refrigerator(String brand, String model, double cost, int stock, String applianceID, int capacity) {
-        super(brand, model, cost, stock, applianceID);
+    public Refrigerator(String brand, String model, double cost, String applianceID, int capacity) {
+        super(brand, model, cost, applianceID);
         this.capacity = capacity;
     }
     
