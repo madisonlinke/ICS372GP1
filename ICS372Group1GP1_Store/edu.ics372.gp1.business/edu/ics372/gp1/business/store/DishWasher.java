@@ -1,10 +1,10 @@
 package edu.ics372.gp1.business.store;
 
-public class Dishwasher extends Appliance{
+public class DishWasher extends Appliance{
 
 	private static final long serialVersionUID = 1L;
 
-	public Dishwasher(String brand, String model, double cost, String applianceID) {
+	public DishWasher(String brand, String model, double cost, String applianceID) {
 		super(brand, model, cost, applianceID);
 	}
 	

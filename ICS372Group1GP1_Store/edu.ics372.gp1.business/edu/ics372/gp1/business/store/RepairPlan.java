@@ -24,11 +24,11 @@ public class RepairPlan implements Matchable<String>, Serializable {
 	private String applianceID;
 	private List<Customer> subscribers = new ArrayList<Customer>();
 
-	public RepairPlan(double cost, String applianceID, List<Customer> subscribers) {
+	public RepairPlan(double cost, String applianceID) {
 		super();
 		this.cost = cost;
 		this.applianceID = applianceID;
-		this.subscribers = subscribers;
+
 	}
 
 	/**

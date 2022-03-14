@@ -12,6 +12,10 @@ import edu.ics372.gp1.business.collections.Matchable;
 
 public abstract class Appliance implements Matchable<String>, Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	protected String brand;
 	protected String model;
 	protected double cost;

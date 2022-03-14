@@ -1,8 +1,11 @@
 package edu.ics372.gp1.business.facade;
 
 import edu.ics372.gp1.business.store.Appliance;
+import edu.ics372.gp1.business.store.ClothDryer;
+import edu.ics372.gp1.business.store.ClothWasher;
 import edu.ics372.gp1.business.store.Customer;
 import edu.ics372.gp1.business.store.Furnace;
+import edu.ics372.gp1.business.store.Refrigerator;
 import edu.ics372.gp1.business.store.RepairPlan;
 
 public abstract class DataTransfer {
@@ -129,7 +132,7 @@ public abstract class DataTransfer {
 	public void setApplianceFields(Appliance appliance) {
 		applianceBrand = appliance.getBrand();
 		applianceModel = appliance.getModel();
-		applianceID = " ";// what is appliance ID going to be?
+		applianceID = appliance.getApplianceID();// what is appliance ID going to be?
 		applianceCost = appliance.getCost();
 		applianceStock = appliance.getStock();
 	}
@@ -141,6 +144,33 @@ public abstract class DataTransfer {
 		applianceCost = furnace.getCost();
 		applianceStock = furnace.getStock();
 		maxHeatOutput = furnace.getMaxHeatOutput();
+	}
+
+	public void setRefrigeratorFields(Refrigerator refrigerator) {
+		applianceBrand = refrigerator.getBrand();
+		applianceModel = refrigerator.getModel();
+		applianceID = refrigerator.getApplianceID();// what is appliance ID going to be?
+		applianceCost = refrigerator.getCost();
+		applianceStock = refrigerator.getStock();
+		capacity = refrigerator.getCapacity();
+	}
+
+	public void setClothWasherFields(ClothWasher clothWasher) {
+		applianceBrand = clothWasher.getBrand();
+		applianceModel = clothWasher.getModel();
+		applianceID = clothWasher.getApplianceID();
+		applianceCost = clothWasher.getCost();
+		applianceStock = clothWasher.getStock();
+		repairPlanCost = clothWasher.getRepairPlan().getCost();
+	}
+
+	public void setClothDryerFields(ClothDryer clothDryer) {
+		applianceBrand = clothDryer.getBrand();
+		applianceModel = clothDryer.getModel();
+		applianceID = clothDryer.getApplianceID();
+		applianceCost = clothDryer.getCost();
+		applianceStock = clothDryer.getStock();
+		repairPlanCost = clothDryer.getRepairPlan().getCost();
 	}
 
 	public double getRepairPlanCost() {

@@ -103,6 +103,26 @@ public class Store implements Serializable {
 	public Result addKitchenRange(Request request) {
 		return inventory.addKitchenRange(request);
 	}
+
+	public Result addRefrigerator(Request request) {
+		// TODO Auto-generated method stub
+		return inventory.addRefrigerator(request);
+	}
+
+	public Result addClothDryer(Request request) {
+		// TODO Auto-generated method stub
+		return inventory.addClothDryer(request);
+	}
+
+	public Result addClothWasher(Request request) {
+		// TODO Auto-generated method stub
+		return inventory.addClothWasher(request);
+	}
+
+	public Result addDishWasher(Request request) {
+		// TODO Auto-generated method stub
+		return inventory.addDishWasher(request);
+	}
 	// (String brand, String model, double cost, String applianceID, int
 	// maxHeatOutput
 
@@ -141,7 +161,7 @@ public class Store implements Serializable {
 	}
 
 	/**
-	 * @return 
+	 * @return
 	 *
 	 */
 	public Result purchaseOneOrMoreModels(Request request) {
