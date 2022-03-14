@@ -79,7 +79,7 @@ public class TesterUI {
 		if (result.getResultCode() != Result.OPERATION_COMPLETED) {
 			System.out.println("Could not add member");
 		} else {
-			System.out.println(result.getApplianceModel() + "'s id is " + result.getCustomerID());
+			System.out.println(result.getApplianceModel() + "'s id is " + result.getApplianceID());
 		}
 	}
 

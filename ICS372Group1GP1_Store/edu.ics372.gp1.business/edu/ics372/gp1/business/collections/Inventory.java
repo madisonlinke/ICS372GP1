@@ -78,7 +78,7 @@ public class Inventory implements ItemList<Appliance, String>, Serializable {
 	public Result addFurnace(Request request) {
 		Result result = new Result();
 		Furnace furnace = new Furnace(request.getApplianceBrand(), request.getApplianceModel(),
-				request.getApplianceCost(), request.getApplianceID(), request.getMaxHeatOutput());
+				request.getApplianceCost(), APPLIANCE_STRING + idCounter++, request.getMaxHeatOutput());
 		if (appliances.add(furnace)) {
 			result.setResultCode(Result.OPERATION_COMPLETED);
 			result.setFurnaceFields(furnace);
