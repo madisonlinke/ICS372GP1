@@ -7,7 +7,7 @@ public class Result extends DataTransfer {
 	public static final int OPERATION_FAILED = 3;
 	public static final int NO_SUCH_CUSTOMER = 4;
 	public static final int INSUFFICIENT_STOCK = 5;
-	// may need additional fields here. need to discuss.
+	public static final int BACKORDER_PLACED = 6;
 
 	private int resultCode;
 

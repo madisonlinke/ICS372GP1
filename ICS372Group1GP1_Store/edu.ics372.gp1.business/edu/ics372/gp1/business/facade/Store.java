@@ -141,12 +141,9 @@ public class Store implements Serializable {
 	}
 
 	/**
+	 * @return 
 	 *
 	 */
-
-	public void purchaseOneOrMoreModels() {
-	}
-
 	public Result purchaseOneOrMoreModels(Request request) {
 		Result result = new Result();
 		Appliance purchase = inventory.search(request.getApplianceID());
@@ -163,7 +160,7 @@ public class Store implements Serializable {
 			} else {
 				if (purchase instanceof Furnace) {
 					addSalesRevenue(stock * cost);
-					result.setInsufficientFurnaceStock(quantity - stock);
+					result.setFurnacesOrdered(stock);
 					purchase.removeStock(stock);
 					result.setResultCode(Result.INSUFFICIENT_STOCK);
 				} else {
@@ -171,6 +168,7 @@ public class Store implements Serializable {
 					purchase.removeStock(stock);
 					request.setBackorderQuantity(quantity - stock);
 					request.setBackorderID(backorderList.addBackorder(purchase, quantity - stock));
+					result.setResultCode(Result.BACKORDER_PLACED);
 				}
 			}
 		}

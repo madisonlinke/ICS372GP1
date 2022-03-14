@@ -21,7 +21,8 @@ public abstract class DataTransfer {
 	private String repairPlanApplianceID;
 	private int backorderQuantity;
 	private int purchaseQuantity;
-	private int insufficientFurnaceStock;
+	private int furnacesOrdered;
+	private int orderQuantity;
 
 	private int maxHeatOutput;
 	private int capacity;
@@ -170,12 +171,12 @@ public abstract class DataTransfer {
 		this.purchaseQuantity = purchaseQuantity;
 	}
 
-	public int getInsufficientFurnaceStock() {
-		return insufficientFurnaceStock;
+	public int getFurnacesOrdered() {
+		return furnacesOrdered;
 	}
 
-	public void setInsufficientFurnaceStock(int insufficientFurnaceStock) {
-		this.insufficientFurnaceStock = insufficientFurnaceStock;
+	public void setFurnacesOrdered(int insufficientFurnaceStock) {
+		this.furnacesOrdered = insufficientFurnaceStock;
 	}
 
 	public String getBackorderID() {
@@ -210,6 +211,14 @@ public abstract class DataTransfer {
 
 	public void setCapacity(int capacity) {
 		this.capacity = capacity;
+	}
+
+	public int getOrderQuantity() {
+		return orderQuantity;
+	}
+
+	public void setOrderQuantity(int orderQuantity) {
+		this.orderQuantity = orderQuantity;
 	}
 
 	/**

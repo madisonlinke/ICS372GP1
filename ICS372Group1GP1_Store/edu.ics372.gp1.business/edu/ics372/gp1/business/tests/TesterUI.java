@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.StringTokenizer;
 
 import edu.ics372.gp1.business.facade.Request;
@@ -13,7 +15,7 @@ import edu.ics372.gp1.business.facade.Store;
 public class TesterUI {
 	private BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 	private static TesterUI testerUI;
-	private static Store s1 = Store.getInstance();
+	private static Store store = Store.getInstance();
 	private int applianceType;
 
 	private TesterUI() {
@@ -62,7 +64,7 @@ public class TesterUI {
 
 	public void addFurnace() {
 		Request.instance().setMaxHeatOutput(Integer.parseInt(getName("Enter Max Heat Output")));
-		Result result = s1.addFurnace(Request.instance());
+		Result result = store.addFurnace(Request.instance());
 		if (result.getResultCode() != Result.OPERATION_COMPLETED) {
 			System.out.println("Could not add member");
 		} else {
@@ -72,7 +74,7 @@ public class TesterUI {
 
 	public void addRefrigerator() {
 		Request.instance().setCapacity(Integer.parseInt(getName("Enter Capacity")));
-		Result result = s1.addAppliance(Request.instance());
+		Result result = store.addAppliance(Request.instance());
 		if (result.getResultCode() != Result.OPERATION_COMPLETED) {
 			System.out.println("Could not add member");
 		} else {
@@ -82,7 +84,7 @@ public class TesterUI {
 
 	public void addKitchenRange() {
 
-		Result result = s1.addKitchenRange(Request.instance());
+		Result result = store.addKitchenRange(Request.instance());
 		if (result.getResultCode() != Result.OPERATION_COMPLETED) {
 			System.out.println("Could not add member");
 		} else {
@@ -98,7 +100,7 @@ public class TesterUI {
 		Request.instance().setCustomerName(getName("Enter member name"));
 		Request.instance().setCustomerAddress(getName("Enter address"));
 		Request.instance().setCustomerPhoneNumber(getName("Enter phone"));
-		Result result = s1.addCustomer(Request.instance());
+		Result result = store.addCustomer(Request.instance());
 		if (result.getResultCode() != Result.OPERATION_COMPLETED) {
 			System.out.println("Could not add member");
 		} else {
@@ -106,18 +108,30 @@ public class TesterUI {
 		}
 	}
 
-	public void purchaseModels() {
-
 	/**
 	 * Purchases a model and the quantity of that model based on input from the
 	 * user. The user is then asked if they wish to order another model.
 	 */
 	public void purchaseOneOrMoreModels() {
-
 		do {
-			Request.instance().setApplianceID(getName("Enter the appliance ID."));
-			Request.instance().setBackorderQuantity(getInt("Enter the quantity to order."));
-
+			Request.instance().setApplianceID(getToken("Enter the appliance ID."));
+			Request.instance().setOrderQuantity(getInt("Enter the quantity to order."));
+			Result result = store.purchaseOneOrMoreModels(Request.instance());
+			switch (result.getResultCode()) {
+				case Result.APPLIANCE_NOT_FOUND:
+					System.out.println("Invalid appliance ID.");
+					break;
+				case Result.INSUFFICIENT_STOCK:
+					System.out.println("Insufficient furnaces stocked. Only " + 
+					result.getFurnacesOrdered() + " units were ordered.");
+					break;
+				case Result.BACKORDER_PLACED:
+					System.out.println("Order partially fulfilled. " + (Request.instance().getOrderQuantity() - result.getBackorderQuantity())
+					+ " units ordered. " + result.getBackorderQuantity() + " units were placed as backorder " + result.getBackorderID() + ".");
+					break;
+				case Result.OPERATION_COMPLETED:
+					System.out.println("Order successfully placed for " + Request.instance().getOrderQuantity() + " units.");
+			}
 		} while (yesOrNo("Would you like to order another model?"));
 	}
 
@@ -174,7 +188,7 @@ public class TesterUI {
 	}
 
 	public void getCustomer() {
-		Iterator<Result> iterator = s1.getCustomers();
+		Iterator<Result> iterator = store.getCustomers();
 		System.out.println("List of members (name, address, phone, id)");
 		while (iterator.hasNext()) {
 			Result result = iterator.next();
@@ -185,17 +199,17 @@ public class TesterUI {
 	}
 
 	public void process() {
-		s1.addCustomer("Joe", "123 fake st", "5555555555");
-		s1.addCustomer("Moe", "123 fake st", "5555555555");
-		System.out.println(s1.getCustomers());
-		Iterator<Result> itr = s1.getCustomers();
+		store.addCustomer("Joe", "123 fake st", "5555555555");
+		store.addCustomer("Moe", "123 fake st", "5555555555");
+		System.out.println(store.getCustomers());
+		Iterator<Result> itr = store.getCustomers();
 
 		getCustomer();
 		addAppliance();
 	}
 
 	private boolean yesOrNo(String prompt) {
-		String more = getName(prompt + " (Y|y)[es] or anything else for no");
+		String more = getToken(prompt + " (Y|y)[es] or anything else for no");
 		if (more.charAt(0) != 'y' && more.charAt(0) != 'Y') {
 			return false;
 		}
