@@ -105,7 +105,7 @@ public class TesterUI {
 	}
 
 	public void addClothDryer() {
-		Request.instance().setCapacity(Integer.parseInt(getName("Enter repair plan cost")));
+		Request.instance().setRepairPlanCost(getDouble("Enter repair plan cost"));
 		Result result = store.addClothDryer(Request.instance());
 		if (result.getResultCode() != Result.OPERATION_COMPLETED) {
 			System.out.println("Could not add member");
@@ -116,7 +116,7 @@ public class TesterUI {
 	}
 
 	public void addClothWasher() {
-		Request.instance().setCapacity(Integer.parseInt(getName("Enter repair plan cost")));
+		Request.instance().setRepairPlanCost(getDouble("Enter repair plan cost"));
 		Result result = store.addClothWasher(Request.instance());
 		if (result.getResultCode() != Result.OPERATION_COMPLETED) {
 			System.out.println("Could not add member");

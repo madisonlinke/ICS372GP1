@@ -28,7 +28,6 @@ public class RepairPlan implements Matchable<String>, Serializable {
 		super();
 		this.cost = cost;
 		this.applianceID = applianceID;
-
 	}
 
 	/**
