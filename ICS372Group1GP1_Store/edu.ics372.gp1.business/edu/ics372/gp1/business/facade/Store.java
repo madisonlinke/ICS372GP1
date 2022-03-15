@@ -1,6 +1,9 @@
 
 package edu.ics372.gp1.business.facade;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.Iterator;
 import java.util.function.Predicate;
@@ -14,6 +17,7 @@ import edu.ics372.gp1.business.collections.CustomerList;
 import edu.ics372.gp1.business.collections.Inventory;
 import edu.ics372.gp1.business.collections.RepairPlanList;
 import edu.ics372.gp1.business.store.Appliance;
+import edu.ics372.gp1.business.store.Backorder;
 import edu.ics372.gp1.business.store.Customer;
 import edu.ics372.gp1.business.store.Furnace;
 import edu.ics372.gp1.business.store.RepairPlan;
@@ -193,6 +197,45 @@ public class Store implements Serializable {
 			}
 		}
 
+		return result;
+	}
+	
+	/**
+	 * Fulfills a single backorder, depleting the given appliance's stock
+	 * by the amount on backorder.
+	 * @return the result of the operation
+	 */
+	public Result fulfillBackorder(Request request) {
+		Result result = new Result();
+		Backorder backorder = backorderList.search(request.getBackorderID());
+		if(backorder == null) {
+			result.setResultCode(Result.BACKORDER_NOT_FOUND);
+		}
+		else {
+			backorder.getAppliance().removeStock(backorder.getQuantity());
+			backorderList.removeBackorder(backorder);
+			result.setResultCode(Result.OPERATION_COMPLETED);
+		}
+		return result;
+	}
+	
+	/**
+	 * Serializes the store's data.
+	 * @return the result of the operation
+	 */
+	public Result saveData() {
+		Result result = new Result();
+		try {
+			FileOutputStream fileOut = new FileOutputStream("store.ser");
+			ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
+			objectOut.writeObject(store);
+			objectOut.flush();
+			objectOut.close();
+			result.setResultCode(Result.OPERATION_COMPLETED);
+		}
+		catch (IOException ioe) {
+			result.setResultCode(Result.OPERATION_FAILED);
+		}
 		return result;
 	}
 

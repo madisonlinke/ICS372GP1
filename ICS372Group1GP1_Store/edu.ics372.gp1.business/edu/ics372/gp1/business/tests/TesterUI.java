@@ -176,6 +176,34 @@ public class TesterUI {
 			}
 		} while (yesOrNo("Would you like to order another model?"));
 	}
+	
+	/**
+	 * Fulfills a single backorder given by the user. The stock for that appliance is
+	 * reduced by the amount on backorder.
+	 */
+	public void fulfillSingleBackorder() {
+		Request.instance().setBackorderID(getToken("Enter the backorder ID."));
+		Result result = store.fulfillBackorder(Request.instance());
+		if (result.getResultCode() == Result.BACKORDER_NOT_FOUND) {
+			System.out.println("Invalid backorder ID.");
+		}
+		else if (result.getResultCode() == Result.OPERATION_COMPLETED) {
+			System.out.println("Backorder " + Request.instance().getBackorderID() + " fulfilled.")
+		}
+	}
+	
+	/**
+	 * Saves the data for the store.
+	 */
+	public void saveData() {
+		Result result = store.saveData();
+		if (result.getResultCode() == Result.OPERATION_COMPLETED) {
+			System.out.println("Store data successfully saved.");
+		}
+		else {
+			System.out.println("Store data was not saved.");
+		}
+	}
 
 	public String getName(String prompt) {
 		do {
